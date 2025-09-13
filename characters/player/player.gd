@@ -1,12 +1,18 @@
 extends CharacterBody3D
 class_name Player
 
+@onready var animation_player: AnimationPlayer = $animalchar/AnimationPlayer
+
 
 const SPEED = 5.0
 
 var running: bool = false
 var can_interact: bool = false
 
+func _ready() -> void:
+	var idle_anim = animation_player.get_animation("Idle")
+	idle_anim.loop_mode = Animation.LOOP_LINEAR
+	animation_player.play("Idle")
 
 func _physics_process(delta: float) -> void:
 	_read_movement_input()
