@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b88vy6q3iaksw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
+albedo_color = Color(0.514667, 0.44, 1, 1)
+
+[node name="PlayerTent" type="CSGBox3D"]
+use_collision = true
+collision_mask = 0
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_fj7yv")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://djme4w541vtvs"]
+
+[ext_resource type="PackedScene" uid="uid://48aeicl5desn" path="res://characters/player/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://epuevc8onrop" path="res://resource_nodes/tree/generic_obstacle.tscn" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://b88vy6q3iaksw" path="res://buildings/player_tent/player_tent.tscn" id="3_aqk2v"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
+geometry_collision_mask = 4294967041
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_f3sb7"]
+sky_material = SubResource("ProceduralSkyMaterial_gv5m4")
+
+[sub_resource type="Environment" id="Environment_fj7yv"]
+background_mode = 2
+sky = SubResource("Sky_f3sb7")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+albedo_color = Color(0.330027, 0.56, 0.3136, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f3sb7"]
+
+[node name="World" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_gv5m4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fj7yv")
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_f3sb7")
+use_collision = true
+collision_mask = 0
+size = Vector3(100, 1, 100)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.926371, 0.332954, -0.176009, 0.141705, 0.124851, 0.982004, 0.348937, -0.934641, 0.0684767, 0, 21.6222, 0)
+
+[node name="GenericObstacle" parent="." instance=ExtResource("1_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23875, 0.796138, -6.75313)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_f3sb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="WorldBoundaryPrep" type="StaticBody3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0, 0, -45)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldBoundaryPrep"]
+shape = SubResource("WorldBoundaryShape3D_f3sb7")
+debug_color = Color(0.966121, 0, 0.482495, 0.42)
+
+[node name="PlayerTent" parent="." instance=ExtResource("3_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23914, 6)

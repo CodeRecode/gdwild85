@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://epuevc8onrop"]
+
+[ext_resource type="Script" uid="uid://dq721ff5bj1n5" path="res://resource_nodes/tree/generic_obstacle.gd" id="1_0pr1t"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0pr1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyf3w"]
+albedo_color = Color(0.61281, 0.303461, 2.88785e-07, 1)
+
+[node name="GenericObstacle" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_0pr1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_0pr1t")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+use_collision = true
+collision_mask = 0
+material = SubResource("StandardMaterial3D_gyf3w")
