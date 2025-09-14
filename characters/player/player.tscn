@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://48aeicl5desn"]
+[gd_scene load_steps=19 format=3 uid="uid://48aeicl5desn"]
 
 [ext_resource type="Script" uid="uid://2w6duw55c6c5" path="res://characters/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
@@ -9,6 +9,58 @@
 albedo_color = Color(1, 0.6425, 0.35, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tlwt5"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxgcw"]
+animation = &"Chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_exd8k"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5dc8e"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ixbpm"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c6leb"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dirf7"]
+advance_mode = 2
+advance_expression = "walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xxgcw"]
+advance_mode = 2
+advance_expression = "running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_exd8k"]
+advance_mode = 2
+advance_expression = "!running and !walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5dc8e"]
+advance_mode = 2
+advance_expression = "walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ixbpm"]
+advance_mode = 2
+advance_expression = "!running and !walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_idpv6"]
+advance_mode = 2
+advance_expression = "running"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_idpv6"]
+states/Chop/node = SubResource("AnimationNodeAnimation_xxgcw")
+states/Chop/position = Vector2(389, 220)
+states/Idle/node = SubResource("AnimationNodeAnimation_exd8k")
+states/Idle/position = Vector2(389, 100)
+states/Run/node = SubResource("AnimationNodeAnimation_5dc8e")
+states/Run/position = Vector2(564, 54)
+states/Start/position = Vector2(162, 100)
+states/Walk/node = SubResource("AnimationNodeAnimation_ixbpm")
+states/Walk/position = Vector2(564, 178)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6")]
+graph_offset = Vector2(-229, -140)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_508ok"]
 
@@ -34,23 +86,35 @@ mesh = SubResource("CapsuleMesh_tlwt5")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -1, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(-1.4566e-09, 1.41441, 0)
-bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
-bones/4/rotation = Quaternion(0, 0, -3.50267e-11, 1)
-bones/5/rotation = Quaternion(-1.16415e-10, 1.19218e-07, 1.38778e-17, 1)
-bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
+bones/1/position = Vector3(0, 1.45752, 0)
+bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/2/rotation = Quaternion(0.754651, 0.00437041, 0.00502693, 0.656093)
+bones/3/rotation = Quaternion(0.0113355, 0.00764807, 0.000237793, 0.999907)
+bones/4/rotation = Quaternion(0.000289967, 0.0813532, -0.00273494, 0.996682)
+bones/5/rotation = Quaternion(-0.0495501, -0.0542188, -0.00517475, 0.997285)
+bones/6/rotation = Quaternion(-0.202624, 0.0440322, -0.768657, 0.605121)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
-bones/7/rotation = Quaternion(0.0266705, 0.185064, -0.449121, 0.873688)
-bones/8/rotation = Quaternion(0.024959, 0.0439738, -0.199483, 0.978596)
-bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
-bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
-bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
-bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
-bones/13/rotation = Quaternion(0.851716, 0.512965, 0.00649546, 0.106792)
-bones/14/rotation = Quaternion(0.051679, -0.000204247, -0.00221661, 0.998661)
-bones/16/rotation = Quaternion(0.851716, -0.512965, -0.00649593, 0.106792)
-bones/17/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
+bones/7/rotation = Quaternion(-0.158401, 0.286772, -0.286283, 0.900396)
+bones/8/rotation = Quaternion(0.11437, 0.039083, -0.166877, 0.978542)
+bones/9/rotation = Quaternion(-0.214368, -0.0535813, 0.766756, 0.602711)
+bones/10/position = Vector3(0.124736, 0.888844, 0.12338)
+bones/10/rotation = Quaternion(0.288847, -0.0143322, 0.503662, 0.814056)
+bones/11/rotation = Quaternion(0.358765, 0.095146, 0.166364, 0.913541)
+bones/12/rotation = Quaternion(0.0835974, -0.00123802, -0.515194, 0.852986)
+bones/13/rotation = Quaternion(0.709729, 0.460994, 0.256886, 0.466668)
+bones/14/rotation = Quaternion(0.219647, -0.000199515, -0.00942108, 0.975534)
+bones/16/rotation = Quaternion(0.839777, -0.533078, -0.00779254, 0.102667)
+bones/17/rotation = Quaternion(0.399309, 0.000970081, 0.00200333, 0.916814)
+bones/18/position = Vector3(0.589896, 0.413708, 0.756527)
+bones/19/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/19/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
+bones/20/position = Vector3(-0.620306, 0.408976, -0.590711)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../animalchar")
+tree_root = SubResource("AnimationNodeStateMachine_idpv6")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../animalchar/AnimationPlayer")
 
 [node name="InteractableDetector" type="Area3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
