@@ -1,6 +1,13 @@
 extends CharacterBody3D
 class_name Player
 
+enum ResourceType {
+	WOOD,
+	STONE,
+	THATCH,
+	FOOD
+}
+
 @onready var animalchar: Node3D = $animalchar
 
 const SPEED = 5.0
@@ -8,10 +15,18 @@ const SPEED = 5.0
 var running: bool = false
 var walking: bool = false
 
-var can_interact: bool = false
+var detected_resource_node: ResourceNode = null
+var inventory: Dictionary = {}
+
+
+func _ready() -> void:
+	for type in ResourceType.values():
+		inventory[type] = 0
+
 
 func _physics_process(delta: float) -> void:
 	_read_movement_input()
+	_check_gather_resources()
 	move_and_slide()
 
 
@@ -47,5 +62,29 @@ func _read_movement_input() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-func _on_interactable_detector_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
-	print("detected")
+
+func _on_interactable_detector_area_entered(area: Area3D) -> void:
+	if area is ResourceNode:
+		detected_resource_node = area
+		print("can gather")
+
+
+func _on_interactable_detector_area_exited(area: Area3D) -> void:
+	if area == detected_resource_node:
+		detected_resource_node = null
+		print("cannot gather")
+
+
+func _check_gather_resources() -> void:
+	if detected_resource_node == null:
+		return
+
+	if Input.is_action_just_pressed("interact"):
+		var gathered_resources: Dictionary = detected_resource_node.gather_resource(1)
+		_add_resources_to_inventory(gathered_resources)
+
+
+func _add_resources_to_inventory(resources: Dictionary) -> void:
+	for type in resources.keys():
+		inventory[type] += resources[type]
+		print(inventory)

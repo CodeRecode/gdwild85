@@ -10,7 +10,9 @@ albedo_color = Color(0.61281, 0.303461, 2.88785e-07, 1)
 [node name="GenericObstacle" type="Area3D"]
 collision_layer = 2
 collision_mask = 0
+monitoring = false
 script = ExtResource("1_0pr1t")
+resource_amount = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_0pr1t")
