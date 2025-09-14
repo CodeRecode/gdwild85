@@ -2,19 +2,17 @@
 
 [ext_resource type="Script" uid="uid://2w6duw55c6c5" path="res://characters/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
+[ext_resource type="PackedScene" uid="uid://cq8l4caa37f6h" path="res://art/axe.glb" id="3_exd8k"]
+[ext_resource type="PackedScene" uid="uid://cfx6haymn2b16" path="res://art/hammer.glb" id="4_5dc8e"]
+[ext_resource type="PackedScene" uid="uid://dnqeab3x6avhb" path="res://art/sickle.glb" id="5_ixbpm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gv5m4"]
 radius = 0.364801
 height = 1.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
-albedo_color = Color(1, 0.6425, 0.35, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tlwt5"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xxgcw"]
-top_radius = 0.1
-bottom_radius = 0.1
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_508ok"]
+height = 1.29303
+radius = 0.458984
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxgcw"]
 animation = &"Chop"
@@ -81,10 +79,6 @@ states/Wave/position = Vector2(381, -64)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6"), "Chop", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf03"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_x5dtk")]
 graph_offset = Vector2(-311, -204)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_508ok"]
-height = 1.29303
-radius = 0.547363
-
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 0
 script = ExtResource("1_4flbx")
@@ -97,11 +91,6 @@ debug_color = Color(0.843137, 0.34902, 0.407843, 0.862745)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 3, 6)
 size = 10.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("StandardMaterial3D_fj7yv")
-mesh = SubResource("CapsuleMesh_tlwt5")
 
 [node name="animalchar" parent="." instance=ExtResource("2_xxgcw")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -128,15 +117,30 @@ bones/18/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
 bones/20/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/20/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
+[node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
 transform = Transform3D(-0.959254, 0.180511, -0.217363, -0.228735, -0.0445169, 0.97247, 0.165865, 0.982565, 0.0839922, -1.20612, 2.10775, 0.0287514)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
 
-[node name="ToolNode" type="MeshInstance3D" parent="animalchar/Armature/Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(0.979575, 0.201078, -1.86265e-09, -0.200802, 0.978233, 0.0523359, 0.0105236, -0.051267, 0.99863, 0.103015, 0.800615, 0.0233428)
-mesh = SubResource("CylinderMesh_xxgcw")
+[node name="axe" parent="animalchar/Armature/Skeleton3D/ToolNode" instance=ExtResource("3_exd8k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.11, 0.055)
+
+[node name="hammer" parent="animalchar/Armature/Skeleton3D/ToolNode" instance=ExtResource("4_5dc8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.58325e-08, 7.45058e-09, 1, -0.0151998, 0.107042, 0.119622)
+
+[node name="sickle" parent="animalchar/Armature/Skeleton3D/ToolNode" instance=ExtResource("5_ixbpm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.11, 0.055)
+
+[node name="InteractableDetector" type="Area3D" parent="animalchar"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="animalchar/InteractableDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528961, 0.319626)
+shape = SubResource("CylinderShape3D_508ok")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../animalchar")
@@ -144,17 +148,7 @@ tree_root = SubResource("AnimationNodeStateMachine_idpv6")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../animalchar/AnimationPlayer")
 
-[node name="InteractableDetector" type="Area3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528961, 0.378449)
-shape = SubResource("CylinderShape3D_508ok")
-
-[connection signal="area_entered" from="InteractableDetector" to="." method="_on_interactable_detector_area_entered"]
-[connection signal="area_exited" from="InteractableDetector" to="." method="_on_interactable_detector_area_exited"]
+[connection signal="area_entered" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_area_entered"]
+[connection signal="area_exited" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_area_exited"]
 
 [editable path="animalchar"]
