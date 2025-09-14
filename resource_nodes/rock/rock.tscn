@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqw28jvko4ycc"]
+
+[ext_resource type="Script" uid="uid://dq721ff5bj1n5" path="res://resource_nodes/resource_node.gd" id="1_v5q22"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_br236"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_br236"]
+albedo_color = Color(0.345098, 0.278431, 0.266667, 1)
+
+[node name="Rock" type="Area3D"]
+collision_layer = 3
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_v5q22")
+resource_type = 1
+resource_amount = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_br236")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+radius = 1.0
+material = SubResource("StandardMaterial3D_br236")

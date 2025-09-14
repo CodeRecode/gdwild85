@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1wl5u0ybnj4p"]
+
+[ext_resource type="Script" uid="uid://dq721ff5bj1n5" path="res://resource_nodes/resource_node.gd" id="1_rcfu8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5pr0w"]
+radius = 1.337
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pr0w"]
+albedo_color = Color(0.29, 0.432, 1, 1)
+
+[node name="Berries" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_rcfu8")
+resource_type = 3
+resource_amount = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5pr0w")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.577881, 0.25, 0.442261)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 0.25
+material = SubResource("StandardMaterial3D_5pr0w")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422119, 0.25, 0.442261)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 0.25
+material = SubResource("StandardMaterial3D_5pr0w")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422119, 0.25, -0.557739)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 0.25
+material = SubResource("StandardMaterial3D_5pr0w")

@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://oqgigpe6usty"]
+
+[ext_resource type="Script" uid="uid://dq721ff5bj1n5" path="res://resource_nodes/resource_node.gd" id="1_ao6es"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pmns5"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyf3w"]
+albedo_color = Color(0.611765, 0.811765, 0, 1)
+
+[node name="Grass" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_ao6es")
+resource_type = 2
+resource_amount = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pmns5")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20166, 0, 0)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299683, 0, 0)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299683, 0, -0.273804)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299683, 0, 0.251099)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299683, 0, 0.580078)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218689, 0, 0.580078)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218689, 0, 0.265625)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218689, 0, -0.227661)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283447, 0, -0.227661)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283447, 0, 0.0944824)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283447, 0, 0.332153)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284729, -0.00494385, 0.638184)
+use_collision = true
+collision_mask = 0
+radius = 0.06
+height = 0.965
+material = SubResource("StandardMaterial3D_gyf3w")
