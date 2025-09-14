@@ -96,11 +96,11 @@ size = 10.0
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(0.0523213, 1.41441, 0)
+bones/1/position = Vector3(-0.0683005, 1.41441, 0)
 bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/2/rotation = Quaternion(0.70675, 0.00226115, -0.00261178, 0.707455)
-bones/4/rotation = Quaternion(-7.72908e-05, -2.18149e-05, -0.000303178, 1)
-bones/5/rotation = Quaternion(-0.00155334, -0.000772616, -0.0107393, 0.999941)
+bones/2/rotation = Quaternion(0.706479, -0.00291216, 0.00336374, 0.70772)
+bones/4/rotation = Quaternion(-0.000222724, 2.66666e-05, 0.000370606, 1)
+bones/5/rotation = Quaternion(-0.00271596, 0.00100889, 0.0140196, 0.999898)
 bones/6/position = Vector3(0.185896, 0.389199, 0.302)
 bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
@@ -113,15 +113,15 @@ bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
 bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
 bones/13/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/14/rotation = Quaternion(0.858644, 0.499108, 0.0237138, 0.114276)
-bones/15/rotation = Quaternion(0.082307, -0.000203826, -0.00353031, 0.996601)
-bones/17/rotation = Quaternion(0.845772, -0.525456, 0.0162205, 0.0911182)
-bones/18/rotation = Quaternion(0.00234147, 9.46451e-05, 0.00222383, 0.999995)
+bones/14/rotation = Quaternion(0.842634, 0.530106, -0.0193489, 0.0926396)
+bones/15/rotation = Quaternion(0.00301431, -0.00020452, -0.000129289, 0.999995)
+bones/17/rotation = Quaternion(0.860592, -0.495563, -0.0274573, 0.114212)
+bones/18/rotation = Quaternion(0.0863683, 0.000281192, 0.00220801, 0.996261)
 bones/20/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/20/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.961031, 0.179646, -0.21011, -0.221345, -0.0447357, 0.974169, 0.165607, 0.982713, 0.0827563, -1.14951, 2.11681, 0.0275356)
+transform = Transform3D(-0.956897, 0.181599, -0.226649, -0.237583, -0.0406139, 0.970518, 0.16704, 0.982533, 0.0820081, -1.27988, 2.09619, 0.0287568)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
