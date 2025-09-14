@@ -9,6 +9,7 @@ enum ResourceType {
 }
 
 @onready var animalchar: Node3D = $animalchar
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 const SPEED = 5.0
 
@@ -82,6 +83,7 @@ func _check_gather_resources() -> void:
 	if Input.is_action_just_pressed("interact"):
 		var gathered_resources: Dictionary = detected_resource_node.gather_resource(1)
 		_add_resources_to_inventory(gathered_resources)
+		animation_tree["parameters/playback"].travel("Chop")
 
 
 func _add_resources_to_inventory(resources: Dictionary) -> void:

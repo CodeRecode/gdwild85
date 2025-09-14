@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://48aeicl5desn"]
+[gd_scene load_steps=23 format=3 uid="uid://48aeicl5desn"]
 
 [ext_resource type="Script" uid="uid://2w6duw55c6c5" path="res://characters/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
@@ -9,6 +9,10 @@
 albedo_color = Color(1, 0.6425, 0.35, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tlwt5"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xxgcw"]
+top_radius = 0.1
+bottom_radius = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxgcw"]
 animation = &"Chop"
@@ -21,6 +25,9 @@ animation = &"Run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ixbpm"]
 animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c6leb"]
+animation = &"Wave"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c6leb"]
 advance_mode = 2
@@ -49,6 +56,14 @@ advance_expression = "!running and !walking"
 advance_mode = 2
 advance_expression = "running"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rpf03"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x5dtk"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_idpv6"]
 states/Chop/node = SubResource("AnimationNodeAnimation_xxgcw")
 states/Chop/position = Vector2(389, 220)
@@ -59,8 +74,10 @@ states/Run/position = Vector2(564, 54)
 states/Start/position = Vector2(162, 100)
 states/Walk/node = SubResource("AnimationNodeAnimation_ixbpm")
 states/Walk/position = Vector2(564, 178)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6")]
-graph_offset = Vector2(-229, -140)
+states/Wave/node = SubResource("AnimationNodeAnimation_c6leb")
+states/Wave/position = Vector2(381, -64)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6"), "Chop", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf03"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_x5dtk")]
+graph_offset = Vector2(-311, -204)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_508ok"]
 
@@ -73,8 +90,7 @@ shape = SubResource("CapsuleShape3D_gv5m4")
 debug_color = Color(0.843137, 0.34902, 0.407843, 0.862745)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 3, 6)
 size = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -86,11 +102,11 @@ mesh = SubResource("CapsuleMesh_tlwt5")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -1, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(-0.00951142, 1.41441, 0)
+bones/1/position = Vector3(-0.0833007, 1.41441, 0)
 bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/2/rotation = Quaternion(0.706484, -0.000415013, 0.000479368, 0.707729)
-bones/4/rotation = Quaternion(-0.000260159, 3.32985e-06, 4.62774e-05, 1)
-bones/5/rotation = Quaternion(-0.00271623, 0.000140612, 0.00195253, 0.999994)
+bones/2/rotation = Quaternion(0.706529, -0.00363103, 0.00419408, 0.707662)
+bones/4/rotation = Quaternion(-0.000173379, 5.74271e-05, 0.000798107, 1)
+bones/5/rotation = Quaternion(-0.00247264, 0.00123018, 0.0170951, 0.99985)
 bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
 bones/7/rotation = Quaternion(0.0266705, 0.185064, -0.449121, 0.873688)
@@ -99,13 +115,24 @@ bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
 bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
 bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
-bones/12/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/13/rotation = Quaternion(0.850779, 0.515545, 0.00116802, 0.101918)
-bones/14/rotation = Quaternion(0.0395623, -0.000204359, -0.0016969, 0.999216)
-bones/16/rotation = Quaternion(0.852854, -0.510594, -0.010023, 0.108782)
-bones/17/rotation = Quaternion(0.0603713, 0.000223544, 0.00221459, 0.998174)
-bones/19/position = Vector3(0.575712, 0.737437, 1.18014)
-bones/19/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
+bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
+bones/13/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
+bones/14/rotation = Quaternion(0.840166, 0.533603, -0.0220617, 0.0943483)
+bones/15/rotation = Quaternion(0.00280561, -0.00020452, -0.000120336, 0.999996)
+bones/17/rotation = Quaternion(0.862748, -0.491693, -0.0308178, 0.113819)
+bones/18/rotation = Quaternion(0.0884812, 0.000285874, 0.00220741, 0.996075)
+bones/20/position = Vector3(0.575712, 0.737437, 1.18014)
+bones/20/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.956131, 0.181943, -0.229585, -0.240538, -0.0403076, 0.969803, 0.167194, 0.982482, 0.0823034, -1.29563, 2.0925, 0.0290475)
+rotation_edit_mode = 1
+bone_name = "Attatch"
+bone_idx = 12
+
+[node name="ToolNode" type="MeshInstance3D" parent="animalchar/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.979575, 0.201078, -1.86265e-09, -0.200802, 0.978233, 0.0523359, 0.0105236, -0.051267, 0.99863, 0.103015, 0.800615, 0.0233428)
+mesh = SubResource("CylinderMesh_xxgcw")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../animalchar")

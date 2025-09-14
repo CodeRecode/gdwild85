@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b88vy6q3iaksw"]
+[gd_scene load_steps=3 format=3 uid="uid://b88vy6q3iaksw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
-albedo_color = Color(0.514667, 0.44, 1, 1)
+[ext_resource type="PackedScene" uid="uid://crtqhftgga4pi" path="res://art/tent.glb" id="1_n4o6g"]
 
-[node name="PlayerTent" type="CSGBox3D"]
-use_collision = true
-collision_mask = 0
-size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_fj7yv")
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4o6g"]
+size = Vector3(2.00452, 1.91354, 2.30878)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="tent" parent="." instance=ExtResource("1_n4o6g")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0379963, 0.831711, 0.00564575)
+shape = SubResource("BoxShape3D_n4o6g")
