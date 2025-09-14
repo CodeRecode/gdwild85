@@ -45,7 +45,6 @@ size = Vector3(100, 1, 100)
 transform = Transform3D(0.926371, 0.332954, -0.176009, 0.141705, 0.124851, 0.982004, 0.348937, -0.934641, 0.0684767, 0, 21.6222, 0)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_f3sb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00266743, 1.06952, -0.0452547)
 
 [node name="WorldBoundaryPrep" type="StaticBody3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0, 0, -45)

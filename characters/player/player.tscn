@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gv5m4"]
+radius = 0.364801
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
 albedo_color = Color(1, 0.6425, 0.35, 1)
@@ -80,12 +82,15 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-311, -204)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_508ok"]
+height = 1.29303
+radius = 0.547363
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 0
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_gv5m4")
 debug_color = Color(0.843137, 0.34902, 0.407843, 0.862745)
 
@@ -99,33 +104,32 @@ material_override = SubResource("StandardMaterial3D_fj7yv")
 mesh = SubResource("CapsuleMesh_tlwt5")
 
 [node name="animalchar" parent="." instance=ExtResource("2_xxgcw")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -1, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(-0.0833007, 1.41441, 0)
 bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/2/rotation = Quaternion(0.706529, -0.00363103, 0.00419408, 0.707662)
-bones/4/rotation = Quaternion(-0.000173379, 5.74271e-05, 0.000798107, 1)
-bones/5/rotation = Quaternion(-0.00247264, 0.00123018, 0.0170951, 0.99985)
+bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/6/position = Vector3(0.185896, 0.389199, 0.302)
 bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
 bones/7/rotation = Quaternion(0.0266705, 0.185064, -0.449121, 0.873688)
 bones/8/rotation = Quaternion(0.024959, 0.0439738, -0.199483, 0.978596)
+bones/9/position = Vector3(-0.185896, 0.389199, 0.302)
 bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
 bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
 bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
 bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
 bones/13/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/14/rotation = Quaternion(0.840166, 0.533603, -0.0220617, 0.0943483)
-bones/15/rotation = Quaternion(0.00280561, -0.00020452, -0.000120336, 0.999996)
-bones/17/rotation = Quaternion(0.862748, -0.491693, -0.0308178, 0.113819)
-bones/18/rotation = Quaternion(0.0884812, 0.000285874, 0.00220741, 0.996075)
+bones/14/rotation = Quaternion(0.851716, 0.512965, 0.00649546, 0.106792)
+bones/15/rotation = Quaternion(0.051679, -0.000204247, -0.00221661, 0.998661)
+bones/17/rotation = Quaternion(0.851716, -0.512965, -0.00649593, 0.106792)
+bones/18/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
 bones/20/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/20/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.956131, 0.181943, -0.229585, -0.240538, -0.0403076, 0.969803, 0.167194, 0.982482, 0.0823034, -1.29563, 2.0925, 0.0290475)
+transform = Transform3D(-0.959254, 0.180511, -0.217363, -0.228735, -0.0445169, 0.97247, 0.165865, 0.982565, 0.0839922, -1.20612, 2.10775, 0.0287514)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
@@ -147,6 +151,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528961, 0.378449)
 shape = SubResource("CylinderShape3D_508ok")
 
 [connection signal="area_entered" from="InteractableDetector" to="." method="_on_interactable_detector_area_entered"]
