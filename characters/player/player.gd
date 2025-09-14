@@ -64,14 +64,14 @@ func _read_movement_input() -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 
-func _on_interactable_detector_area_entered(area: Area3D) -> void:
-	if area is ResourceNode:
-		detected_resource_node = area
+func _on_interactable_detector_body_entered(node: Node) -> void:
+	if node is ResourceNode:
+		detected_resource_node = node
 		print("can gather")
 
 
-func _on_interactable_detector_area_exited(area: Area3D) -> void:
-	if area == detected_resource_node:
+func _on_interactable_detector_body_exited(node: Node) -> void:
+	if node == detected_resource_node:
 		detected_resource_node = null
 		print("cannot gather")
 

@@ -8,10 +8,9 @@ radius = 1.337
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pr0w"]
 albedo_color = Color(0.29, 0.432, 1, 1)
 
-[node name="Berries" type="Area3D"]
+[node name="Berries" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 0
-monitoring = false
 script = ExtResource("1_rcfu8")
 resource_type = 3
 resource_amount = 1

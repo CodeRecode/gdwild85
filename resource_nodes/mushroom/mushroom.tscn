@@ -11,10 +11,9 @@ albedo_color = Color(0.992561, 0.974533, 0.965107, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyq6h"]
 albedo_color = Color(0.996078, 0.376471, 0.360784, 1)
 
-[node name="Mushroom" type="Area3D"]
+[node name="Mushroom" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 0
-monitoring = false
 script = ExtResource("1_wvh1v")
 resource_type = 3
 resource_amount = 1
