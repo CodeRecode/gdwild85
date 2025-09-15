@@ -11,6 +11,12 @@ enum ResourceType {
 @onready var animalchar: Node3D = $animalchar
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+@onready var tool_node: BoneAttachment3D = $animalchar/Armature/Skeleton3D/ToolNode
+@onready var axe: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/axe
+@onready var hammer: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/hammer
+@onready var sickle: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/sickle
+
+
 const SPEED = 5.0
 
 var running: bool = false
@@ -32,6 +38,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _read_movement_input() -> void:
+	var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+	var is_gathering = animation_state_machine.get_current_node() in ["Chop", "Gather"]
+	if is_gathering:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+		return
+	
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	var input_v_axis: float = Input.get_axis("joystick_up", "joystick_down")
@@ -79,11 +92,25 @@ func _on_interactable_detector_body_exited(node: Node) -> void:
 func _check_gather_resources() -> void:
 	if detected_resource_node == null:
 		return
+		
+	var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+	var is_gathering = animation_state_machine.get_current_node() in ["Chop", "Gather"]
+	tool_node.visible = is_gathering
+	if is_gathering:
+		return
 
 	if Input.is_action_just_pressed("interact"):
 		var gathered_resources: Dictionary = detected_resource_node.gather_resource(1)
 		_add_resources_to_inventory(gathered_resources)
-		animation_tree["parameters/playback"].travel("Chop")
+		
+		if detected_resource_node.resource_type == ResourceType.FOOD:
+			animation_state_machine.start("Gather")
+		else:
+			animation_state_machine.start("Chop")
+			
+		hammer.visible = detected_resource_node.resource_type == ResourceType.STONE
+		axe.visible = detected_resource_node.resource_type == ResourceType.WOOD
+		sickle.visible = detected_resource_node.resource_type == ResourceType.THATCH
 
 
 func _add_resources_to_inventory(resources: Dictionary) -> void:

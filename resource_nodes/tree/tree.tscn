@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgj4cydfoay3"]
+[gd_scene load_steps=6 format=3 uid="uid://cgj4cydfoay3"]
 
 [ext_resource type="Script" uid="uid://dq721ff5bj1n5" path="res://resource_nodes/resource_node.gd" id="1_g0e1m"]
+[ext_resource type="PackedScene" uid="uid://bmjehxyigothc" path="res://art/resources/tree.glb" id="2_0gpod"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0pr1t"]
+height = 2.34326
+radius = 0.541016
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyf3w"]
 albedo_color = Color(0.61281, 0.303461, 2.88785e-07, 1)
@@ -17,14 +20,20 @@ script = ExtResource("1_g0e1m")
 resource_amount = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19943, 0)
 shape = SubResource("CylinderShape3D_0pr1t")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+visible = false
 use_collision = true
 collision_mask = 0
 material = SubResource("StandardMaterial3D_gyf3w")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43207, 0)
+visible = false
 radius = 1.332
 material = SubResource("StandardMaterial3D_olawa")
+
+[node name="tree" parent="." instance=ExtResource("2_0gpod")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

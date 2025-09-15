@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cuq0aukx14kyx" path="res://art/resources/rock.glb" id="2_52nlc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uuu6v"]
-radius = 0.447063
+radius = 0.564351
 
 [node name="Rock" type="StaticBody3D"]
 collision_layer = 3
@@ -14,8 +14,8 @@ resource_type = 1
 resource_amount = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0837879, 0.468201, -0.0238834)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00330482, 0.726341, -0.0238834)
 shape = SubResource("CapsuleShape3D_uuu6v")
 
 [node name="rock" parent="." instance=ExtResource("2_52nlc")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.140211, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.140211, 0.0801685)
