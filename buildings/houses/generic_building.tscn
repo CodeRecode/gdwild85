@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqv26iku65wqo"]
+
+[ext_resource type="Script" uid="uid://xek5lmvvegqj" path="res://buildings/houses/generic_building.gd" id="1_3bmby"]
+[ext_resource type="PackedScene" uid="uid://52wvmusxqvda" path="res://art/building.glb" id="1_88r74"]
+[ext_resource type="Script" uid="uid://d1smwnicvqg2p" path="res://resource.gd" id="2_7ank7"]
+
+[sub_resource type="Resource" id="Resource_7ank7"]
+script = ExtResource("2_7ank7")
+resource_required = 0
+amount = 1
+metadata/_custom_type_script = "uid://d1smwnicvqg2p"
+
+[sub_resource type="Resource" id="Resource_xcy2e"]
+script = ExtResource("2_7ank7")
+resource_required = 1
+amount = 1
+metadata/_custom_type_script = "uid://d1smwnicvqg2p"
+
+[sub_resource type="Resource" id="Resource_itc6r"]
+script = ExtResource("2_7ank7")
+resource_required = 2
+amount = 1
+metadata/_custom_type_script = "uid://d1smwnicvqg2p"
+
+[sub_resource type="Resource" id="Resource_qos6l"]
+script = ExtResource("2_7ank7")
+resource_required = 3
+amount = 1
+metadata/_custom_type_script = "uid://d1smwnicvqg2p"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pkg7o"]
+
+[node name="Building" type="StaticBody3D"]
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_3bmby")
+build_cost = Array[ExtResource("2_7ank7")]([SubResource("Resource_7ank7"), SubResource("Resource_xcy2e"), SubResource("Resource_itc6r"), SubResource("Resource_qos6l")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 7, 1)
+shape = SubResource("BoxShape3D_pkg7o")
+
+[node name="building" parent="." instance=ExtResource("1_88r74")]

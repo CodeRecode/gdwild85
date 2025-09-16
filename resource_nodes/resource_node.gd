@@ -1,14 +1,8 @@
 extends StaticBody3D
 class_name ResourceNode
 
-enum ResourceType {
-	WOOD,
-	STONE,
-	THATCH,
-	FOOD
-}
 
-@export var resource_type: ResourceType
+@export_enum("WOOD", "STONE", "THATCH", "FOOD") var resource_type: int
 @export var resource_amount: int
 @export var node_health: int = 5
 

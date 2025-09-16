@@ -113,6 +113,8 @@ interact={
 
 3d_physics/layer_1="World"
 3d_physics/layer_2="ResourceNodes"
+3d_physics/layer_3="Buildings"
+3d_physics/layer_4="EmptyLots"
 
 [physics]
 
