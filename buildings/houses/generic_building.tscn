@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqv26iku65wqo"]
+[gd_scene load_steps=11 format=3 uid="uid://dqv26iku65wqo"]
 
 [ext_resource type="Script" uid="uid://xek5lmvvegqj" path="res://buildings/houses/generic_building.gd" id="1_3bmby"]
 [ext_resource type="PackedScene" uid="uid://52wvmusxqvda" path="res://art/building.glb" id="1_88r74"]
 [ext_resource type="Script" uid="uid://d1smwnicvqg2p" path="res://resource.gd" id="2_7ank7"]
+[ext_resource type="PackedScene" uid="uid://bmmkgiy15g2y3" path="res://art/plot.glb" id="4_xcy2e"]
+[ext_resource type="PackedScene" uid="uid://crtqhftgga4pi" path="res://art/tent.glb" id="5_itc6r"]
 
 [sub_resource type="Resource" id="Resource_7ank7"]
 script = ExtResource("2_7ank7")
@@ -41,3 +43,11 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 7, 1)
 shape = SubResource("BoxShape3D_pkg7o")
 
 [node name="building" parent="." instance=ExtResource("1_88r74")]
+visible = false
+
+[node name="plot" parent="." instance=ExtResource("4_xcy2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="tent" parent="." instance=ExtResource("5_itc6r")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
