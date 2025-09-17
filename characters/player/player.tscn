@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://48aeicl5desn"]
+[gd_scene load_steps=31 format=3 uid="uid://48aeicl5desn"]
 
 [ext_resource type="Script" uid="uid://2w6duw55c6c5" path="res://characters/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
@@ -17,6 +17,12 @@ radius = 0.458984
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxgcw"]
 animation = &"Chop"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idpv6"]
+animation = &"Chop_Bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x5dtk"]
+animation = &"Floss"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dirf7"]
 animation = &"Gather"
 
@@ -25,6 +31,9 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5dc8e"]
 animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpf03"]
+animation = &"Throw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ixbpm"]
 animation = &"Walk"
@@ -71,22 +80,40 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_on558"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gqopd"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_icpky"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_idpv6"]
 states/Chop/node = SubResource("AnimationNodeAnimation_xxgcw")
-states/Chop/position = Vector2(389, 220)
+states/Chop/position = Vector2(389, 242)
+states/Chop_Bounce/node = SubResource("AnimationNodeAnimation_idpv6")
+states/Chop_Bounce/position = Vector2(254, 234)
+states/Floss/node = SubResource("AnimationNodeAnimation_x5dtk")
+states/Floss/position = Vector2(489, -38)
 states/Gather/node = SubResource("AnimationNodeAnimation_dirf7")
-states/Gather/position = Vector2(247, 216)
+states/Gather/position = Vector2(105, 220)
 states/Idle/node = SubResource("AnimationNodeAnimation_exd8k")
 states/Idle/position = Vector2(389, 100)
 states/Run/node = SubResource("AnimationNodeAnimation_5dc8e")
 states/Run/position = Vector2(564, 54)
 states/Start/position = Vector2(162, 100)
+states/Throw/node = SubResource("AnimationNodeAnimation_rpf03")
+states/Throw/position = Vector2(389, -30)
 states/Walk/node = SubResource("AnimationNodeAnimation_ixbpm")
 states/Walk/position = Vector2(564, 178)
 states/Wave/node = SubResource("AnimationNodeAnimation_c6leb")
-states/Wave/position = Vector2(381, -64)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6"), "Chop", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf03"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_x5dtk"), "Gather", "Idle", SubResource("AnimationNodeStateMachineTransition_3t07l")]
-graph_offset = Vector2(-355, -42)
+states/Wave/position = Vector2(275, -30)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6"), "Chop", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf03"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_x5dtk"), "Gather", "Idle", SubResource("AnimationNodeStateMachineTransition_3t07l"), "Chop_Bounce", "Idle", SubResource("AnimationNodeStateMachineTransition_on558"), "Throw", "Idle", SubResource("AnimationNodeStateMachineTransition_gqopd"), "Floss", "Idle", SubResource("AnimationNodeStateMachineTransition_icpky")]
+graph_offset = Vector2(-224, -132)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 0
@@ -102,50 +129,43 @@ debug_color = Color(0.843137, 0.34902, 0.407843, 0.862745)
 transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 3, 6)
 size = 10.0
 
-[node name="InteractableDetector" type="Area3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-collision_layer = 0
-collision_mask = 10
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528961, 0.319626)
-shape = SubResource("CylinderShape3D_508ok")
-
 [node name="animalchar" parent="." instance=ExtResource("2_xxgcw")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/position = Vector3(0.232299, 1.3197, 0)
+bones/1/rotation = Quaternion(-0.706488, -0.0295832, 0.0295832, 0.706488)
+bones/2/position = Vector3(-1.49012e-08, 0, -1.49012e-07)
 bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/5/rotation = Quaternion(2.22045e-16, 1.19209e-07, -1.86265e-09, 1)
 bones/6/position = Vector3(0.185896, 0.389199, 0.302)
-bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
+bones/6/rotation = Quaternion(0.174259, -0.286059, -0.758974, 0.558356)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
-bones/7/rotation = Quaternion(0.0266705, 0.185064, -0.449121, 0.873688)
-bones/8/rotation = Quaternion(0.024959, 0.0439738, -0.199483, 0.978596)
+bones/7/rotation = Quaternion(0.294969, 0.0390228, -0.461894, 0.835538)
+bones/8/rotation = Quaternion(0.0249591, 0.0439738, -0.199483, 0.978596)
 bones/9/position = Vector3(-0.185896, 0.389199, 0.302)
-bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
-bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
-bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
-bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
-bones/12/rotation = Quaternion(0.572871, 0.122661, -0.0663848, 0.807691)
-bones/16/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/17/rotation = Quaternion(0.851716, 0.512965, 0.00649546, 0.106792)
-bones/18/rotation = Quaternion(0.051679, -0.000204247, -0.00221661, 0.998661)
-bones/20/rotation = Quaternion(0.851716, -0.512965, -0.00649593, 0.106792)
-bones/21/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
+bones/9/rotation = Quaternion(-0.357346, -0.183896, 0.716918, 0.569661)
+bones/10/position = Vector3(0.118207, 0.862694, 0.116804)
+bones/10/rotation = Quaternion(0.148451, -0.236898, 0.2528, 0.926247)
+bones/11/rotation = Quaternion(0.0343743, -0.0370818, -0.030144, 0.998266)
+bones/12/rotation = Quaternion(0.686783, -3.8355e-08, 0.128772, 0.715365)
+bones/16/rotation = Quaternion(0.0835974, -0.00123802, -0.515194, 0.852986)
+bones/17/rotation = Quaternion(0.90242, 0.395984, 0.0845724, 0.147249)
+bones/18/rotation = Quaternion(0.183317, -0.000201051, -0.00786282, 0.983022)
+bones/20/rotation = Quaternion(0.733554, -0.617177, -0.0735237, 0.274928)
+bones/21/rotation = Quaternion(0.411073, 0.000995774, 0.00199067, 0.9116)
 bones/23/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/23/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 bones/25/position = Vector3(-0.575712, 0.737437, 1.18014)
 
 [node name="Basket" parent="animalchar/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55287, -1.78176)
+transform = Transform3D(0.996499, -0.0836005, 0, 0.0836005, 0.996499, 0, 0, 0, 1, 0.137123, 2.45418, -1.78176)
 
 [node name="Straps" parent="animalchar/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.0875769, 0, -0.48273, 0, 1.34529, 0, 0.048273, 0, 0.875769, -0.525378, 2.88214, -0.864578)
+transform = Transform3D(0.0872704, -0.112467, -0.48104, 0.00732148, 1.34058, -0.0403565, 0.048273, 0, 0.875769, -0.413942, 2.73837, -0.864578)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.957639, -0.238, -0.162123, -0.0646275, -0.371001, 0.926381, -0.280627, 0.897615, 0.339904, -1.20612, 2.10775, 0.0287514)
+transform = Transform3D(-0.878345, -0.0681959, 0.473137, 0.472935, -0.268046, 0.839336, 0.0695829, 0.960989, 0.267689, -1.49084, 2.15909, -0.53399)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
@@ -162,13 +182,23 @@ visible = false
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.11, 0.055)
 visible = false
 
+[node name="InteractableDetector" type="Area3D" parent="animalchar"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+collision_layer = 0
+collision_mask = 10
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="animalchar/InteractableDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528961, 0.319626)
+shape = SubResource("CylinderShape3D_508ok")
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../animalchar")
 tree_root = SubResource("AnimationNodeStateMachine_idpv6")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../animalchar/AnimationPlayer")
 
-[connection signal="body_entered" from="InteractableDetector" to="." method="_on_interactable_detector_body_entered"]
-[connection signal="body_exited" from="InteractableDetector" to="." method="_on_interactable_detector_body_exited"]
+[connection signal="body_entered" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_body_entered"]
+[connection signal="body_exited" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_body_exited"]
 
 [editable path="animalchar"]

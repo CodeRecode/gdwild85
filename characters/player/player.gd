@@ -9,7 +9,8 @@ class_name Player
 @onready var hammer: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/hammer
 @onready var sickle: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/sickle
 
-
+const GATHERING_ANIMS = ["Chop", "Chop_Bounce", "Gather"]
+const BUILDING_ANIMS = ["Throw"]
 const SPEED = 5.0
 
 var running: bool = false
@@ -39,8 +40,10 @@ func _physics_process(_delta: float) -> void:
 
 func _read_movement_input() -> void:
 	var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
-	var is_gathering = animation_state_machine.get_current_node() in ["Chop", "Gather"]
-	if is_gathering:
+	var current_animation = animation_state_machine.get_current_node()
+	var is_gathering = current_animation in GATHERING_ANIMS
+	var is_building = current_animation in BUILDING_ANIMS
+	if is_gathering or is_building:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		return
@@ -98,7 +101,7 @@ func _on_interactable_detector_body_exited(node: Node) -> void:
 
 func _check_gather_resources() -> void:
 	var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
-	var is_gathering = animation_state_machine.get_current_node() in ["Chop", "Gather"]
+	var is_gathering = animation_state_machine.get_current_node() in GATHERING_ANIMS
 	tool_node.visible = is_gathering
 	if is_gathering:
 		return
@@ -117,19 +120,18 @@ func _check_gather_resources() -> void:
 			ResourceCost.ResourceType.WOOD:
 				damage *= houses_built[Building.BuildingType.Woodcutter]
 				axe.visible = true
+				animation_state_machine.start("Chop_Bounce")
 			ResourceCost.ResourceType.STONE:
 				damage *= houses_built[Building.BuildingType.StoneMason]
 				hammer.visible = true
+				animation_state_machine.start("Chop_Bounce")
 			ResourceCost.ResourceType.THATCH:
 				damage *= houses_built[Building.BuildingType.Thatcher]
 				sickle.visible = true
+				animation_state_machine.start("Chop")
 			ResourceCost.ResourceType.FOOD:
 				damage *= houses_built[Building.BuildingType.FoodStorage]
-
-		if detected_resource_node.resource_type == ResourceCost.ResourceType.FOOD:
-			animation_state_machine.start("Gather")
-		else:
-			animation_state_machine.start("Chop")
+				animation_state_machine.start("Gather")
 
 		await animation_tree.animation_finished
 
@@ -151,14 +153,16 @@ func _check_build() -> void:
 
 	if detected_building_node.building_mesh.visible == true:
 		return
-	#var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
-	#var is_building = animation_state_machine.get_current_node() in ["Chop", "Gather"]
-	#tool_node.visible = is_building
-	#if is_building:
-		#return
+	var animation_state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+	var is_building = animation_state_machine.get_current_node() in BUILDING_ANIMS
+	if is_building:
+		return
 
 	if Input.is_action_just_pressed("interact"):
 		if detected_building_node.check_can_build(inventory):
+			animation_state_machine.start("Throw")
+			await animation_tree.animation_finished
+		
 			detected_building_node.build()
 			_remove_resources_from_inventory(detected_building_node.build_cost)
 
