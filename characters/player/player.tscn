@@ -128,17 +128,24 @@ bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
 bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
 bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
-bones/12/rotation = Quaternion(0.572871, 0.122661, -0.0663848, 0.807691)
-bones/13/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/14/rotation = Quaternion(0.851716, 0.512965, 0.00649546, 0.106792)
-bones/15/rotation = Quaternion(0.051679, -0.000204247, -0.00221661, 0.998661)
-bones/17/rotation = Quaternion(0.851716, -0.512965, -0.00649593, 0.106792)
-bones/18/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
-bones/20/position = Vector3(0.575712, 0.737437, 1.18014)
-bones/20/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
+bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
+bones/16/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
+bones/17/rotation = Quaternion(0.851716, 0.512965, 0.00649546, 0.106792)
+bones/18/rotation = Quaternion(0.051679, -0.000204247, -0.00221661, 0.998661)
+bones/20/rotation = Quaternion(0.851716, -0.512965, -0.00649593, 0.106792)
+bones/21/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
+bones/23/position = Vector3(0.575712, 0.737437, 1.18014)
+bones/23/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
+bones/25/position = Vector3(-0.575712, 0.737437, 1.18014)
+
+[node name="Basket" parent="animalchar/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55287, -1.78176)
+
+[node name="Straps" parent="animalchar/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.0875769, 0, -0.48273, 0, 1.34529, 0, 0.048273, 0, 0.875769, -0.525378, 2.88214, -0.864578)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.957639, -0.238, -0.162123, -0.0646275, -0.371001, 0.926381, -0.280627, 0.897615, 0.339904, -1.20612, 2.10775, 0.0287514)
+transform = Transform3D(-0.959254, 0.180511, -0.217363, -0.228735, -0.0445169, 0.97247, 0.165865, 0.982565, 0.0839922, -1.20612, 2.10775, 0.0287514)
 rotation_edit_mode = 1
 visible = false
 bone_name = "Attatch"
