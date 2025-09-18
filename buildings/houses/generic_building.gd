@@ -38,4 +38,5 @@ func check_can_build(player_inventory: Dictionary) -> bool:
 
 func build() -> void:
 	plot_mesh.visible = false
+	tent_mesh.visible = false
 	building_mesh.visible = true
