@@ -9,6 +9,16 @@ class_name Player
 @onready var hammer: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/hammer
 @onready var sickle: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/sickle
 
+@onready var bubble: MeshInstance3D = $SubViewport/Control/Panel/Bubble
+@onready var green_check: MeshInstance3D = $SubViewport/Control/Panel/Bubble/GreenCheck
+@onready var red_x: MeshInstance3D = $SubViewport/Control/Panel/Bubble/RedX
+@onready var bear_face: MeshInstance3D = $SubViewport/Control/Panel/Bubble/BearFace
+
+@onready var logs_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Logs/LogsAmount
+@onready var stone_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Stone/StoneAmount
+@onready var thatch_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Thatch/ThatchAmount
+@onready var food_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Food/FoodAmount
+
 const GATHERING_ANIMS = ["Chop", "Chop_Bounce", "Gather"]
 const BUILDING_ANIMS = ["Throw"]
 const SPEED = 5.0
@@ -65,12 +75,11 @@ func _read_movement_input() -> void:
 
 	running = false
 	walking = false
-	#run for now
+
 	if should_run and input_dir.length() >= 0.2:
 		running = true
 		velocity.x = direction.x * SPEED * 2
 		velocity.z = direction.z * SPEED * 2
-	#walk for now
 	elif input_dir.length() >= 0.2:
 		walking = true
 		velocity.x = direction.x * SPEED
@@ -79,6 +88,9 @@ func _read_movement_input() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	bubble.global_position.x = global_position.x
+	bubble.global_position.z = global_position.z
+
 
 func _on_interactable_detector_body_entered(node: Node) -> void:
 	if node is ResourceNode:
@@ -86,7 +98,6 @@ func _on_interactable_detector_body_entered(node: Node) -> void:
 		print("can gather")
 	elif node is Building:
 		detected_building_node = node
-		print("can build")
 
 
 func _on_interactable_detector_body_exited(node: Node) -> void:
@@ -96,7 +107,7 @@ func _on_interactable_detector_body_exited(node: Node) -> void:
 
 	if node == detected_building_node:
 		detected_building_node = null
-		print("cannot build")
+		bubble.visible = false
 
 
 func _check_gather_resources() -> void:
@@ -146,9 +157,22 @@ func _add_resources_to_inventory(resources: Dictionary) -> void:
 	for type in resources.keys():
 		inventory[type] += resources[type]
 
+	_update_hud_amounts()
+
 
 func _check_build() -> void:
 	if detected_building_node == null:
+		_show_bubble(false, false, false, false, false, 0)
+		return
+
+	if detected_building_node.check_can_build(inventory):
+		_show_bubble(false, true, true, false, false, 2)
+	elif detected_building_node.building_mesh.visible == false:
+		_show_bubble(false, true, false, true, false, 2)
+
+		if Input.is_action_just_pressed("interact"):
+			Input.start_joy_vibration(0, 0.3, 0.5, 0.2)
+
 		return
 
 	if detected_building_node.building_mesh.visible == true:
@@ -159,33 +183,57 @@ func _check_build() -> void:
 		return
 
 	if Input.is_action_just_pressed("interact"):
-		if detected_building_node.check_can_build(inventory):
-			animation_state_machine.start("Throw")
-			await animation_tree.animation_finished
-		
-			detected_building_node.build()
-			_remove_resources_from_inventory(detected_building_node.build_cost)
+		animation_state_machine.start("Throw")
+		await animation_tree.animation_finished
 
-			match detected_building_node.building_type:
-				Building.BuildingType.Woodcutter:
-					houses_built[detected_building_node.building_type] = 3
-				Building.BuildingType.StoneMason:
-					houses_built[detected_building_node.building_type] = 3
-				Building.BuildingType.Thatcher:
-					houses_built[detected_building_node.building_type] = 3
-				Building.BuildingType.FoodStorage:
-					houses_built[detected_building_node.building_type] = 3
-				Building.BuildingType.Cafe:
-					houses_built[detected_building_node.building_type] = 2
-				Building.BuildingType.GeneralStore:
-					houses_built[detected_building_node.building_type] = 2
-				Building.BuildingType.PlayerHome:
-					houses_built[detected_building_node.building_type] = 1
-		else:
-			Input.start_joy_vibration(0, 0.3, 0.5, 0.2)
-			print("not enough resources")
+		detected_building_node.build()
+		_remove_resources_from_inventory(detected_building_node.build_cost)
+		_show_bubble(true, true, false, false, true, 2)
+
+		match detected_building_node.building_type:
+			Building.BuildingType.Woodcutter:
+				houses_built[detected_building_node.building_type] = 3
+			Building.BuildingType.StoneMason:
+				houses_built[detected_building_node.building_type] = 3
+			Building.BuildingType.Thatcher:
+				houses_built[detected_building_node.building_type] = 3
+			Building.BuildingType.FoodStorage:
+				houses_built[detected_building_node.building_type] = 3
+			Building.BuildingType.Cafe:
+				houses_built[detected_building_node.building_type] = 2
+			Building.BuildingType.GeneralStore:
+				houses_built[detected_building_node.building_type] = 2
+			Building.BuildingType.PlayerHome:
+				houses_built[detected_building_node.building_type] = 1
 
 
 func _remove_resources_from_inventory(resources: Array[ResourceCost]) -> void:
 	for type in resources:
 		inventory[type.resource_required] -= type.amount
+
+	_update_hud_amounts()
+
+
+func _update_hud_amounts() -> void:
+	logs_amount_label.text = "x" + str(inventory[0])
+	stone_amount_label.text = "x" + str(inventory[1])
+	thatch_amount_label.text = "x" + str(inventory[2])
+	food_amount_label.text = "x" + str(inventory[3])
+
+func _show_bubble(override:bool, show: bool, check: bool, x: bool, face: bool, time: float) -> void:
+	if bubble.visible and not override: return
+
+	bubble.visible = show
+	green_check.visible = false
+	red_x.visible = false
+	bear_face.visible = false
+
+	if check: green_check.visible = show
+	elif x: red_x.visible = show
+	elif face: bear_face.visible = show
+
+	await get_tree().create_timer(time).timeout
+	bubble.visible = false
+	green_check.visible = false
+	red_x.visible = false
+	bear_face.visible = false

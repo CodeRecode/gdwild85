@@ -1,10 +1,18 @@
-[gd_scene load_steps=31 format=3 uid="uid://48aeicl5desn"]
+[gd_scene load_steps=45 format=3 uid="uid://48aeicl5desn"]
 
 [ext_resource type="Script" uid="uid://2w6duw55c6c5" path="res://characters/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
 [ext_resource type="PackedScene" uid="uid://cq8l4caa37f6h" path="res://art/axe.glb" id="3_exd8k"]
 [ext_resource type="PackedScene" uid="uid://cfx6haymn2b16" path="res://art/hammer.glb" id="4_5dc8e"]
 [ext_resource type="PackedScene" uid="uid://dnqeab3x6avhb" path="res://art/sickle.glb" id="5_ixbpm"]
+[ext_resource type="Texture2D" uid="uid://b4vrn0b8m4tq5" path="res://art/resources/log.png" id="6_rpf03"]
+[ext_resource type="Texture2D" uid="uid://dye1ljnx7g04e" path="res://art/ui/bubble.svg" id="6_x5dtk"]
+[ext_resource type="Texture2D" uid="uid://bqnbc46grx5cj" path="res://art/ui/checkmark.svg" id="7_3t07l"]
+[ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="7_x5dtk"]
+[ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="8_3t07l"]
+[ext_resource type="Texture2D" uid="uid://b4altv4um656f" path="res://art/ui/cross.svg" id="8_gqopd"]
+[ext_resource type="Texture2D" uid="uid://cx45wbt3rfy1w" path="res://art/ui/happyBear.svg" id="9_icpky"]
+[ext_resource type="Texture2D" uid="uid://dc2rh6hhnax0b" path="res://art/resources/tree_leaf.png" id="9_on558"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gv5m4"]
 radius = 0.364801
@@ -115,6 +123,33 @@ states/Wave/position = Vector2(275, -30)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6"), "Chop", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf03"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_x5dtk"), "Gather", "Idle", SubResource("AnimationNodeStateMachineTransition_3t07l"), "Chop_Bounce", "Idle", SubResource("AnimationNodeStateMachineTransition_on558"), "Throw", "Idle", SubResource("AnimationNodeStateMachineTransition_gqopd"), "Floss", "Idle", SubResource("AnimationNodeStateMachineTransition_icpky")]
 graph_offset = Vector2(-224, -132)
 
+[sub_resource type="QuadMesh" id="QuadMesh_x5dtk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t07l"]
+transparency = 1
+cull_mode = 1
+albedo_texture = ExtResource("6_x5dtk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_on558"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("7_3t07l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58jvb"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("8_gqopd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8l73k"]
+transparency = 1
+albedo_texture = ExtResource("9_icpky")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpf03"]
+outline_size = 1
+outline_color = Color(0.05, 0.05, 0.05, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.745098)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 0
 collision_mask = 5
@@ -133,39 +168,39 @@ size = 10.0
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(0.232299, 1.3197, 0)
-bones/1/rotation = Quaternion(-0.706488, -0.0295832, 0.0295832, 0.706488)
-bones/2/position = Vector3(-1.49012e-08, 0, -1.49012e-07)
-bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
-bones/5/rotation = Quaternion(2.22045e-16, 1.19209e-07, -1.86265e-09, 1)
+bones/1/position = Vector3(0.0103711, 1.41441, 0)
+bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/2/rotation = Quaternion(0.706484, 0.000452208, -0.00052233, 0.707729)
+bones/4/rotation = Quaternion(-0.000265501, -1.42101e-05, -0.000197489, 1)
+bones/5/rotation = Quaternion(-0.00271623, -0.000153072, -0.00212901, 0.999994)
 bones/6/position = Vector3(0.185896, 0.389199, 0.302)
-bones/6/rotation = Quaternion(0.174259, -0.286059, -0.758974, 0.558356)
+bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
-bones/7/rotation = Quaternion(0.294969, 0.0390228, -0.461894, 0.835538)
-bones/8/rotation = Quaternion(0.0249591, 0.0439738, -0.199483, 0.978596)
+bones/7/rotation = Quaternion(0.0266705, 0.185064, -0.449121, 0.873688)
+bones/8/rotation = Quaternion(0.024959, 0.0439738, -0.199483, 0.978596)
 bones/9/position = Vector3(-0.185896, 0.389199, 0.302)
-bones/9/rotation = Quaternion(-0.357346, -0.183896, 0.716918, 0.569661)
-bones/10/position = Vector3(0.118207, 0.862694, 0.116804)
-bones/10/rotation = Quaternion(0.148451, -0.236898, 0.2528, 0.926247)
-bones/11/rotation = Quaternion(0.0343743, -0.0370818, -0.030144, 0.998266)
-bones/12/rotation = Quaternion(0.686783, -3.8355e-08, 0.128772, 0.715365)
-bones/16/rotation = Quaternion(0.0835974, -0.00123802, -0.515194, 0.852986)
-bones/17/rotation = Quaternion(0.90242, 0.395984, 0.0845724, 0.147249)
-bones/18/rotation = Quaternion(0.183317, -0.000201051, -0.00786282, 0.983022)
-bones/20/rotation = Quaternion(0.733554, -0.617177, -0.0735237, 0.274928)
-bones/21/rotation = Quaternion(0.411073, 0.000995774, 0.00199067, 0.9116)
+bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
+bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
+bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
+bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
+bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
+bones/16/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
+bones/17/rotation = Quaternion(0.85306, 0.510206, 0.010348, 0.108957)
+bones/18/rotation = Quaternion(0.0609781, -0.00020414, -0.00261547, 0.998136)
+bones/20/rotation = Quaternion(0.850892, -0.515532, -0.000431118, 0.101043)
+bones/21/rotation = Quaternion(0.0372547, 0.000172232, 0.00221917, 0.999303)
 bones/23/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/23/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 bones/25/position = Vector3(-0.575712, 0.737437, 1.18014)
 
 [node name="Basket" parent="animalchar/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.996499, -0.0836005, 0, 0.0836005, 0.996499, 0, 0, 0, 1, 0.137123, 2.45418, -1.78176)
+transform = Transform3D(0.999999, 0.00137829, -9.79545e-05, -0.00137812, 0.999998, 0.00176007, 0.00010038, -0.00175995, 0.999999, 0.0121148, 2.54973, -1.78376)
 
 [node name="Straps" parent="animalchar/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.0872704, -0.112467, -0.48104, 0.00732148, 1.34058, -0.0403565, 0.048273, 0, 0.875769, -0.413942, 2.73837, -0.864578)
+transform = Transform3D(0.0875721, 0.0018542, -0.482815, -3.57275e-05, 1.34528, 0.00220667, 0.0482817, -0.00236763, 0.875719, -0.512899, 2.88133, -0.867212)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.878345, -0.0681959, 0.473137, 0.472935, -0.268046, 0.839336, 0.0695829, 0.960989, 0.267689, -1.49084, 2.15909, -0.53399)
+transform = Transform3D(-0.959679, 0.180308, -0.215649, -0.226653, -0.0425856, 0.973044, 0.166264, 0.982688, 0.081736, -1.19513, 2.10995, 0.0278214)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
@@ -197,6 +232,138 @@ root_node = NodePath("../animalchar")
 tree_root = SubResource("AnimationNodeStateMachine_idpv6")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../animalchar/AnimationPlayer")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+gui_disable_input = true
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bubble" type="MeshInstance3D" parent="SubViewport/Control/Panel"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.361542, 2, 0)
+visible = false
+mesh = SubResource("QuadMesh_x5dtk")
+surface_material_override/0 = SubResource("StandardMaterial3D_3t07l")
+
+[node name="GreenCheck" type="MeshInstance3D" parent="SubViewport/Control/Panel/Bubble"]
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 2.98023e-08, 0.0688477, -0.212524)
+visible = false
+mesh = SubResource("QuadMesh_x5dtk")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_on558")
+
+[node name="RedX" type="MeshInstance3D" parent="SubViewport/Control/Panel/Bubble"]
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 2.98023e-08, 0.0688477, -0.212524)
+visible = false
+mesh = SubResource("QuadMesh_x5dtk")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_58jvb")
+
+[node name="BearFace" type="MeshInstance3D" parent="SubViewport/Control/Panel/Bubble"]
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 2.98023e-08, 0.0688477, -0.212524)
+visible = false
+mesh = SubResource("QuadMesh_x5dtk")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8l73k")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.0121528
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 576.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Logs" type="TextureRect" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_rpf03")
+expand_mode = 3
+
+[node name="LogsAmount" type="Label" parent="HUD/MarginContainer/HBoxContainer/Logs"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 32.0
+offset_right = 94.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_rpf03")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Stone" type="TextureRect" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x5dtk")
+expand_mode = 3
+
+[node name="StoneAmount" type="Label" parent="HUD/MarginContainer/HBoxContainer/Stone"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 32.0
+offset_right = 107.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_rpf03")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Thatch" type="TextureRect" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_3t07l")
+expand_mode = 3
+
+[node name="ThatchAmount" type="Label" parent="HUD/MarginContainer/HBoxContainer/Thatch"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 32.0
+offset_right = 101.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_rpf03")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Food" type="TextureRect" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_on558")
+expand_mode = 3
+
+[node name="FoodAmount" type="Label" parent="HUD/MarginContainer/HBoxContainer/Food"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 32.0
+offset_right = 82.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_rpf03")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [connection signal="body_entered" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_body_entered"]
 [connection signal="body_exited" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_body_exited"]
