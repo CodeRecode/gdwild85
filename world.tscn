@@ -45,6 +45,7 @@ size = Vector3(100, 1, 100)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.926371, 0.332954, -0.176008, -0.0517483, 0.575445, 0.816202, 0.37304, -0.746997, 0.550305, 0, 21.6222, 13)
 light_color = Color(1, 0.959972, 0.95901, 1)
+shadow_enabled = true
 
 [node name="WorldBoundaryPrep" type="StaticBody3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0, 0, -45)
