@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://djme4w541vtvs"]
+[gd_scene load_steps=16 format=3 uid="uid://djme4w541vtvs"]
 
 [ext_resource type="PackedScene" uid="uid://48aeicl5desn" path="res://characters/player/player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://dobyixeqcl641" path="res://art/env/ground_grass.png" id="1_ioo17"]
 [ext_resource type="PackedScene" uid="uid://b88vy6q3iaksw" path="res://buildings/player_tent/player_tent.tscn" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b1wl5u0ybnj4p" path="res://resource_nodes/berries/berries.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://cgj4cydfoay3" path="res://resource_nodes/tree/tree.tscn" id="4_aqk2v"]
@@ -21,11 +22,14 @@ sky_material = SubResource("ProceduralSkyMaterial_gv5m4")
 
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 2
+background_energy_multiplier = 0.8
 sky = SubResource("Sky_f3sb7")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
 albedo_color = Color(0.527147, 0.56, 0.3136, 1)
+albedo_texture = ExtResource("1_ioo17")
+uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f3sb7"]
 

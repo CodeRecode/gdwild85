@@ -161,18 +161,18 @@ shape = SubResource("CapsuleShape3D_gv5m4")
 debug_color = Color(0.843137, 0.34902, 0.407843, 0.862745)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 3, 6)
+transform = Transform3D(1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 0, 3, 3)
 size = 10.0
 
 [node name="animalchar" parent="." instance=ExtResource("2_xxgcw")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(-0.0586711, 1.41441, 0)
+bones/1/position = Vector3(-0.0867641, 1.41441, 0)
 bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/2/rotation = Quaternion(0.706479, -0.00253833, 0.00293194, 0.707724)
-bones/4/rotation = Quaternion(-0.000230061, 2.20926e-05, 0.000307037, 1)
-bones/5/rotation = Quaternion(-0.00271604, 0.000866686, 0.0120433, 0.999923)
+bones/2/rotation = Quaternion(0.7065, -0.00320049, 0.00369678, 0.707697)
+bones/4/rotation = Quaternion(-0.000202932, 3.90044e-05, 0.000542074, 1)
+bones/5/rotation = Quaternion(-0.00270631, 0.00124574, 0.0173113, 0.999846)
 bones/6/position = Vector3(0.185896, 0.389199, 0.302)
 bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
@@ -185,22 +185,22 @@ bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
 bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
 bones/16/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/17/rotation = Quaternion(0.844204, 0.527846, -0.0175698, 0.0915927)
-bones/18/rotation = Quaternion(0.00304534, -0.00020452, -0.000130621, 0.999995)
-bones/20/rotation = Quaternion(0.859233, -0.498044, -0.0251348, 0.114184)
-bones/21/rotation = Quaternion(0.0842216, 0.000276433, 0.00220861, 0.996445)
+bones/17/rotation = Quaternion(0.839663, 0.534321, -0.0226615, 0.0946215)
+bones/18/rotation = Quaternion(0.00293061, -0.00020452, -0.000125699, 0.999996)
+bones/20/rotation = Quaternion(0.863263, -0.4908, -0.0314991, 0.113577)
+bones/21/rotation = Quaternion(0.0876108, 0.000283945, 0.00220766, 0.996152)
 bones/23/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/23/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 bones/25/position = Vector3(-0.575712, 0.737437, 1.18014)
 
 [node name="Basket" parent="animalchar/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.99997, -0.00773655, 0.000549832, 0.00773557, 0.999969, 0.00176227, -0.00056345, -0.00175798, 0.999998, -0.0684585, 2.5497, -1.78376)
+transform = Transform3D(0.999952, -0.00975469, 0.00069359, 0.0097535, 0.999951, 0.00169647, -0.000710106, -0.00168961, 0.999998, -0.0991053, 2.54979, -1.78368)
 
 [node name="Straps" parent="animalchar/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.0876008, -0.0104079, -0.482234, 0.000762528, 1.34524, -0.00219085, 0.0482236, -0.00236499, 0.87604, -0.595864, 2.8765, -0.866861)
+transform = Transform3D(0.0876062, -0.0131229, -0.482099, 0.000936076, 1.34522, -0.00322259, 0.0482107, -0.00227301, 0.876111, -0.627034, 2.87547, -0.866683)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.957213, 0.181456, -0.225427, -0.236367, -0.0408241, 0.970806, 0.166956, 0.982551, 0.0819677, -1.26958, 2.09772, 0.0286536)
+transform = Transform3D(-0.956591, 0.181737, -0.227827, -0.238768, -0.0404915, 0.970232, 0.167102, 0.982513, 0.0821268, -1.29864, 2.09471, 0.0288737)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
