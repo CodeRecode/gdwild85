@@ -18,4 +18,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00330482, 0.726341, -0.0238
 shape = SubResource("CapsuleShape3D_uuu6v")
 
 [node name="rock" parent="." instance=ExtResource("2_52nlc")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.140211, 0.0801685)
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.140211, 0.0801685)

@@ -2,26 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dye1ljnx7g04e"
-path="res://.godot/imported/bubble.svg-432d67d3eba2878ba5c50107260c9f0a.ctex"
+uid="uid://bnnw3ogil5236"
+path.s3tc="res://.godot/imported/mushrooms_mushrom_tex.png-4c028f5bea146890f1a9c2dec1b89304.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "701e867b8dbf05185bfe7655189b9bb9"
 }
 
 [deps]
 
-source_file="res://art/ui/bubble.svg"
-dest_files=["res://.godot/imported/bubble.svg-432d67d3eba2878ba5c50107260c9f0a.ctex"]
+source_file="res://art/resources/mushrooms_mushrom_tex.png"
+dest_files=["res://.godot/imported/mushrooms_mushrom_tex.png-4c028f5bea146890f1a9c2dec1b89304.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,6 +36,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=0
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

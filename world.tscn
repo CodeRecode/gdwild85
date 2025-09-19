@@ -43,8 +43,9 @@ collision_mask = 0
 size = Vector3(100, 1, 100)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.926371, 0.332954, -0.176008, -0.0517483, 0.575445, 0.816202, 0.37304, -0.746997, 0.550305, 0, 21.6222, 13)
+transform = Transform3D(0.686686, 0.479307, -0.54656, -0.070713, 0.792324, 0.605988, 0.723507, -0.377475, 0.577971, 0, 21.6222, 13)
 light_color = Color(1, 0.959972, 0.95901, 1)
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="WorldBoundaryPrep" type="StaticBody3D" parent="."]
@@ -60,7 +61,7 @@ debug_color = Color(0.966121, 0, 0.482495, 0.42)
 [node name="Buildings" type="Node" parent="."]
 
 [node name="PlayerTent" parent="Buildings" instance=ExtResource("3_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.203977, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.112026, 6)
 
 [node name="WoodcutterHouse" parent="Buildings" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 13, 0, -3)
