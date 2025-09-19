@@ -20,6 +20,12 @@ enum BuildingType {
 @onready var plot_mesh: Node3D = $plot
 @onready var tent_mesh: Node3D = $tent
 
+@onready var recipe_board: MeshInstance3D = $RecipeBoard
+@onready var logs_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Logs/LogsAmount
+@onready var stone_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Stone/StoneAmount
+@onready var thatch_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Thatch/ThatchAmount
+@onready var food_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Food/FoodAmount
+
 
 func _ready() -> void:
 	building_mesh.visible = false
