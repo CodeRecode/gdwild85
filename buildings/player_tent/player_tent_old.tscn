@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://06xui2us606k"]
+
+[ext_resource type="PackedScene" uid="uid://crtqhftgga4pi" path="res://art/tent.glb" id="1_n4o6g"]
+[ext_resource type="PackedScene" uid="uid://52wvmusxqvda" path="res://art/building.glb" id="2_jk65u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4o6g"]
+size = Vector3(2.00452, 1.91354, 2.30878)
+
+[node name="PlayerHome" type="Node3D"]
+
+[node name="tent" parent="." instance=ExtResource("1_n4o6g")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
+
+[node name="building" parent="." instance=ExtResource("2_jk65u")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0379963, 0.831711, 0.00564575)
+shape = SubResource("BoxShape3D_n4o6g")

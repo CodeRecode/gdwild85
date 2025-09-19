@@ -1,36 +1,36 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqv26iku65wqo"]
+[gd_scene load_steps=20 format=3 uid="uid://cda1tiyw1kh5g"]
 
-[ext_resource type="Script" uid="uid://xek5lmvvegqj" path="res://buildings/houses/generic_building.gd" id="1_3bmby"]
-[ext_resource type="PackedScene" uid="uid://52wvmusxqvda" path="res://art/building.glb" id="1_88r74"]
-[ext_resource type="Script" uid="uid://d1smwnicvqg2p" path="res://resource.gd" id="2_7ank7"]
-[ext_resource type="PackedScene" uid="uid://bmmkgiy15g2y3" path="res://art/plot.glb" id="4_xcy2e"]
-[ext_resource type="PackedScene" uid="uid://crtqhftgga4pi" path="res://art/tent.glb" id="5_itc6r"]
-[ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="6_jr3t4"]
-[ext_resource type="Texture2D" uid="uid://b4vrn0b8m4tq5" path="res://art/resources/log.png" id="7_y6el6"]
-[ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="8_xex5t"]
-[ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="9_6mth6"]
-[ext_resource type="Texture2D" uid="uid://fa6guitmyxwh" path="res://art/resources/food.png" id="10_kx370"]
+[ext_resource type="Script" uid="uid://xek5lmvvegqj" path="res://buildings/houses/generic_building.gd" id="1_t0ehr"]
+[ext_resource type="Script" uid="uid://d1smwnicvqg2p" path="res://resource.gd" id="2_568q3"]
+[ext_resource type="PackedScene" uid="uid://52wvmusxqvda" path="res://art/building.glb" id="3_2jajr"]
+[ext_resource type="PackedScene" uid="uid://bmmkgiy15g2y3" path="res://art/plot.glb" id="4_43tq6"]
+[ext_resource type="PackedScene" uid="uid://crtqhftgga4pi" path="res://art/tent.glb" id="5_6ur0v"]
+[ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="6_orjni"]
+[ext_resource type="Texture2D" uid="uid://b4vrn0b8m4tq5" path="res://art/resources/log.png" id="7_47578"]
+[ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="8_naknq"]
+[ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="9_cyaev"]
+[ext_resource type="Texture2D" uid="uid://fa6guitmyxwh" path="res://art/resources/food.png" id="10_sv678"]
 
 [sub_resource type="Resource" id="Resource_7ank7"]
-script = ExtResource("2_7ank7")
+script = ExtResource("2_568q3")
 resource_required = 0
 amount = 1
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="Resource" id="Resource_xcy2e"]
-script = ExtResource("2_7ank7")
+script = ExtResource("2_568q3")
 resource_required = 1
 amount = 1
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="Resource" id="Resource_itc6r"]
-script = ExtResource("2_7ank7")
+script = ExtResource("2_568q3")
 resource_required = 2
 amount = 1
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="Resource" id="Resource_qos6l"]
-script = ExtResource("2_7ank7")
+script = ExtResource("2_568q3")
 resource_required = 3
 amount = 1
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
@@ -45,6 +45,7 @@ resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_jr3t4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xex5t"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_y6el6")
 size = Vector2(10.5, 1.8)
 
@@ -54,23 +55,25 @@ outline_color = Color(0.05, 0.05, 0.05, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.745098)
 
-[node name="Building" type="StaticBody3D"]
+[node name="StoneMason" type="StaticBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 collision_layer = 12
 collision_mask = 0
-script = ExtResource("1_3bmby")
-build_cost = Array[ExtResource("2_7ank7")]([SubResource("Resource_7ank7"), SubResource("Resource_xcy2e"), SubResource("Resource_itc6r"), SubResource("Resource_qos6l")])
+script = ExtResource("1_t0ehr")
+building_type = 1
+build_cost = Array[ExtResource("2_568q3")]([SubResource("Resource_7ank7"), SubResource("Resource_xcy2e"), SubResource("Resource_itc6r"), SubResource("Resource_qos6l")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 7, 1)
 shape = SubResource("BoxShape3D_pkg7o")
 
-[node name="building" parent="." instance=ExtResource("1_88r74")]
+[node name="building" parent="." instance=ExtResource("3_2jajr")]
 visible = false
 
-[node name="plot" parent="." instance=ExtResource("4_xcy2e")]
+[node name="plot" parent="." instance=ExtResource("4_43tq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
-[node name="tent" parent="." instance=ExtResource("5_itc6r")]
+[node name="tent" parent="." instance=ExtResource("5_6ur0v")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visible = false
 
@@ -105,7 +108,7 @@ custom_minimum_size = Vector2(350, 60)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("6_jr3t4")
+texture = ExtResource("6_orjni")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel"]
@@ -117,7 +120,7 @@ alignment = 1
 
 [node name="Logs" type="TextureRect" parent="SubViewport/Control/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("7_y6el6")
+texture = ExtResource("7_47578")
 expand_mode = 3
 
 [node name="LogsAmount" type="Label" parent="SubViewport/Control/Panel/HBoxContainer/Logs"]
@@ -133,7 +136,7 @@ vertical_alignment = 2
 
 [node name="Stone" type="TextureRect" parent="SubViewport/Control/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("8_xex5t")
+texture = ExtResource("8_naknq")
 expand_mode = 3
 
 [node name="StoneAmount" type="Label" parent="SubViewport/Control/Panel/HBoxContainer/Stone"]
@@ -149,7 +152,7 @@ vertical_alignment = 2
 
 [node name="Thatch" type="TextureRect" parent="SubViewport/Control/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("9_6mth6")
+texture = ExtResource("9_cyaev")
 expand_mode = 3
 
 [node name="ThatchAmount" type="Label" parent="SubViewport/Control/Panel/HBoxContainer/Thatch"]
@@ -165,7 +168,7 @@ vertical_alignment = 2
 
 [node name="Food" type="TextureRect" parent="SubViewport/Control/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("10_kx370")
+texture = ExtResource("10_sv678")
 expand_mode = 3
 
 [node name="FoodAmount" type="Label" parent="SubViewport/Control/Panel/HBoxContainer/Food"]
