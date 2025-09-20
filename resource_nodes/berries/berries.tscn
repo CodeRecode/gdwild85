@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpflgtepubbj6" path="res://art/resources/berry_bush.glb" id="2_gorlj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5pr0w"]
-radius = 1.39064
+radius = 0.872755
 
 [node name="Berries" type="StaticBody3D"]
 collision_layer = 2
@@ -12,6 +12,7 @@ collision_mask = 0
 script = ExtResource("1_rcfu8")
 resource_type = 3
 resource_amount = 1
+node_health = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.277238, 0.710102, -0.193712)

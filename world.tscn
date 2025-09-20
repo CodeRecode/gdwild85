@@ -27,9 +27,16 @@ sky_material = SubResource("ProceduralSkyMaterial_gv5m4")
 
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 2
-background_energy_multiplier = 0.8
+background_energy_multiplier = 1.1
 sky = SubResource("Sky_f3sb7")
+ambient_light_source = 3
 tonemap_mode = 2
+tonemap_exposure = 1.2
+tonemap_white = 0.95
+fog_mode = 1
+fog_light_color = Color(0.850918, 0.396924, 0.221231, 1)
+fog_density = 1.0
+fog_depth_curve = 2.21914
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
 albedo_color = Color(0.527147, 0.56, 0.3136, 1)
@@ -54,7 +61,7 @@ size = Vector3(150, 1, 150)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.686686, 0.479307, -0.54656, -0.070713, 0.792324, 0.605988, 0.723507, -0.377475, 0.577971, 0, 21.6222, 13)
 light_color = Color(1, 0.959972, 0.95901, 1)
-light_energy = 0.5
+light_energy = 0.45
 shadow_enabled = true
 
 [node name="WorldBoundary" type="StaticBody3D" parent="."]
@@ -81,7 +88,7 @@ shape = SubResource("WorldBoundaryShape3D_f3sb7")
 debug_color = Color(0.966121, 0, 0.482495, 0.42)
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14.5292)
 
 [node name="Buildings" type="Node" parent="."]
 
@@ -454,6 +461,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 5)
 
 [node name="Rock17" parent="Resources/Town" instance=ExtResource("6_dwbse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 29)
+
+[node name="Rock20" parent="Resources/Town" instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 16)
+
+[node name="Rock21" parent="Resources/Town" instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -19)
+
+[node name="Rock22" parent="Resources/Town" instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+
+[node name="Rock23" parent="Resources/Town" instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0539, 0, 5.52869)
+
+[node name="Rock24" parent="Resources/Town" instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0539, 0, 11.5287)
 
 [node name="Rock18" parent="Resources/Town" instance=ExtResource("6_dwbse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 27)

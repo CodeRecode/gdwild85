@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnthwc4b5absq"]
+[gd_scene load_steps=25 format=3 uid="uid://cnthwc4b5absq"]
 
 [ext_resource type="Script" uid="uid://xek5lmvvegqj" path="res://buildings/houses/generic_building.gd" id="1_h7pdc"]
 [ext_resource type="Script" uid="uid://d1smwnicvqg2p" path="res://resource.gd" id="2_wkn6t"]
@@ -10,29 +10,30 @@
 [ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="8_4p7gg"]
 [ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="9_7u27u"]
 [ext_resource type="Texture2D" uid="uid://fa6guitmyxwh" path="res://art/resources/food.png" id="10_o8bbq"]
+[ext_resource type="Texture2D" uid="uid://wsyh1166rawe" path="res://art/ui/arrow.svg" id="11_fs20w"]
 
 [sub_resource type="Resource" id="Resource_7ank7"]
 script = ExtResource("2_wkn6t")
 resource_required = 0
-amount = 1
+amount = 6
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="Resource" id="Resource_xcy2e"]
 script = ExtResource("2_wkn6t")
 resource_required = 1
-amount = 1
+amount = 4
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="Resource" id="Resource_itc6r"]
 script = ExtResource("2_wkn6t")
 resource_required = 2
-amount = 1
+amount = 5
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="Resource" id="Resource_qos6l"]
 script = ExtResource("2_wkn6t")
 resource_required = 3
-amount = 1
+amount = 8
 metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pkg7o"]
@@ -47,12 +48,30 @@ albedo_texture = SubResource("ViewportTexture_jr3t4")
 [sub_resource type="QuadMesh" id="QuadMesh_xex5t"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_y6el6")
-size = Vector2(10.5, 1.8)
+size = Vector2(31.5, 5.4)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8tcus"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmggj"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_8tcus")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lqilg"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_qmggj")
+size = Vector2(7.5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cu0vx"]
-outline_size = 1
+outline_size = 4
 outline_color = Color(0.05, 0.05, 0.05, 1)
-shadow_size = 2
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.745098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_74bvo"]
+outline_size = 4
+outline_color = Color(0.05, 0.05, 0.05, 1)
+shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.745098)
 
 [node name="GeneralStore" type="StaticBody3D"]
@@ -78,8 +97,13 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visible = false
 
 [node name="RecipeBoard" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 mesh = SubResource("QuadMesh_xex5t")
+
+[node name="BonusBoard" type="MeshInstance3D" parent="RecipeBoard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.6, 0)
+mesh = SubResource("QuadMesh_lqilg")
+skeleton = NodePath("../../../../../../..")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -181,3 +205,62 @@ text = "x0"
 label_settings = SubResource("LabelSettings_cu0vx")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(75, 50)
+render_target_clear_mode = 2
+
+[node name="Control" type="Control" parent="SubViewport2"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SubViewport2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport2/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5iuos")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport2/Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="WoodBonus" type="Label" parent="SubViewport2/Control/Panel/HBoxContainer"]
+layout_mode = 2
+text = "Tools"
+label_settings = SubResource("LabelSettings_74bvo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wood" type="TextureRect" parent="SubViewport2/Control/Panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_fs20w")
+expand_mode = 3

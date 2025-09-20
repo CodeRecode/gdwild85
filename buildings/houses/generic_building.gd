@@ -29,6 +29,12 @@ enum BuildingType {
 
 func _ready() -> void:
 	building_mesh.visible = false
+	recipe_board.visible = false
+
+	logs_amount_label.text = "x" + str(build_cost[0].amount)
+	stone_amount_label.text = "x" + str(build_cost[1].amount)
+	thatch_amount_label.text = "x" + str(build_cost[2].amount)
+	food_amount_label.text = "x" + str(build_cost[3].amount)
 
 	if building_type == BuildingType.PlayerHome:
 		plot_mesh.visible = false

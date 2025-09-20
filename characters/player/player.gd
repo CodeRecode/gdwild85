@@ -14,10 +14,10 @@ class_name Player
 @onready var red_x: MeshInstance3D = $SubViewport/Control/Panel/Bubble/RedX
 @onready var bear_face: MeshInstance3D = $SubViewport/Control/Panel/Bubble/BearFace
 
-@onready var logs_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Logs/LogsAmount
-@onready var stone_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Stone/StoneAmount
-@onready var thatch_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Thatch/ThatchAmount
-@onready var food_amount_label: Label = $HUD/MarginContainer/HBoxContainer/Food/FoodAmount
+@onready var logs_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Logs/LogsAmount
+@onready var stone_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Stone/StoneAmount
+@onready var thatch_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Thatch/ThatchAmount
+@onready var food_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Food/FoodAmount
 
 const GATHERING_ANIMS = ["Chop", "Chop_Bounce", "Gather"]
 const BUILDING_ANIMS = ["Throw"]
@@ -88,14 +88,13 @@ func _read_movement_input() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	bubble.global_position.x = global_position.x
+	bubble.global_position.x = global_position.x - 0.31
 	bubble.global_position.z = global_position.z
 
 
 func _on_interactable_detector_body_entered(node: Node) -> void:
 	if node is ResourceNode:
 		detected_resource_node = node
-		print("can gather")
 	elif node is Building:
 		detected_building_node = node
 
@@ -103,9 +102,9 @@ func _on_interactable_detector_body_entered(node: Node) -> void:
 func _on_interactable_detector_body_exited(node: Node) -> void:
 	if node == detected_resource_node:
 		detected_resource_node = null
-		print("cannot gather")
 
 	if node == detected_building_node:
+		detected_building_node.recipe_board.visible = false
 		detected_building_node = null
 		bubble.visible = false
 
@@ -121,27 +120,23 @@ func _check_gather_resources() -> void:
 		return
 
 	if Input.is_action_just_pressed("interact"):
-		var damage: int = 10
+		var damage: int = 1
 
-		damage *= houses_built[Building.BuildingType.Cafe]
-		damage *= houses_built[Building.BuildingType.GeneralStore]
-		damage *= houses_built[Building.BuildingType.PlayerHome]
+		damage *= houses_built[4]
+		damage *= houses_built[5]
+		damage *= houses_built[6]
 
 		match detected_resource_node.resource_type:
 			ResourceCost.ResourceType.WOOD:
-				damage *= houses_built[Building.BuildingType.Woodcutter]
 				axe.visible = true
 				animation_state_machine.start("Chop_Bounce")
 			ResourceCost.ResourceType.STONE:
-				damage *= houses_built[Building.BuildingType.StoneMason]
 				hammer.visible = true
 				animation_state_machine.start("Chop_Bounce")
 			ResourceCost.ResourceType.THATCH:
-				damage *= houses_built[Building.BuildingType.Thatcher]
 				sickle.visible = true
 				animation_state_machine.start("Chop")
 			ResourceCost.ResourceType.FOOD:
-				damage *= houses_built[Building.BuildingType.FoodStorage]
 				animation_state_machine.start("Gather")
 
 		await animation_tree.animation_finished
@@ -155,20 +150,33 @@ func _check_gather_resources() -> void:
 
 func _add_resources_to_inventory(resources: Dictionary) -> void:
 	for type in resources.keys():
-		inventory[type] += resources[type]
+		var multiplier: int = 1
+
+		if type == ResourceCost.ResourceType.WOOD and houses_built[0] > 1:
+			multiplier = 2
+		elif type == ResourceCost.ResourceType.STONE and houses_built[1] > 1:
+			multiplier = 2
+		elif type == ResourceCost.ResourceType.THATCH and houses_built[2] > 1:
+			multiplier = 2
+		elif type == ResourceCost.ResourceType.FOOD and houses_built[3] > 1:
+			multiplier = 2
+
+		inventory[type] += resources[type] * multiplier
 
 	_update_hud_amounts()
 
 
 func _check_build() -> void:
 	if detected_building_node == null:
-		_show_bubble(false, false, false, false, false, 0)
+		_show_bubble(false, false, false, false, false)
 		return
 
-	if detected_building_node.check_can_build(inventory):
-		_show_bubble(false, true, true, false, false, 2)
+	if detected_building_node.check_can_build(inventory) and detected_building_node.building_mesh.visible == false:
+		detected_building_node.recipe_board.visible = true
+		_show_bubble(false, true, true, false, false)
 	elif detected_building_node.building_mesh.visible == false:
-		_show_bubble(false, true, false, true, false, 2)
+		detected_building_node.recipe_board.visible = true
+		_show_bubble(false, true, false, true, false)
 
 		if Input.is_action_just_pressed("interact"):
 			Input.start_joy_vibration(0, 0.3, 0.5, 0.2)
@@ -188,7 +196,7 @@ func _check_build() -> void:
 
 		detected_building_node.build()
 		_remove_resources_from_inventory(detected_building_node.build_cost)
-		_show_bubble(true, true, false, false, true, 2)
+		_show_bubble(true, true, false, false, true)
 
 		match detected_building_node.building_type:
 			Building.BuildingType.Woodcutter:
@@ -204,7 +212,7 @@ func _check_build() -> void:
 			Building.BuildingType.GeneralStore:
 				houses_built[detected_building_node.building_type] = 2
 			Building.BuildingType.PlayerHome:
-				houses_built[detected_building_node.building_type] = 1
+				houses_built[detected_building_node.building_type] = 2
 
 
 func _remove_resources_from_inventory(resources: Array[ResourceCost]) -> void:
@@ -220,7 +228,7 @@ func _update_hud_amounts() -> void:
 	thatch_amount_label.text = "x" + str(inventory[2])
 	food_amount_label.text = "x" + str(inventory[3])
 
-func _show_bubble(override:bool, show: bool, check: bool, x: bool, face: bool, time: float) -> void:
+func _show_bubble(override:bool, show: bool, check: bool, x: bool, face: bool) -> void:
 	if bubble.visible and not override: return
 
 	bubble.visible = show
@@ -231,9 +239,3 @@ func _show_bubble(override:bool, show: bool, check: bool, x: bool, face: bool, t
 	if check: green_check.visible = show
 	elif x: red_x.visible = show
 	elif face: bear_face.visible = show
-
-	await get_tree().create_timer(time).timeout
-	bubble.visible = false
-	green_check.visible = false
-	red_x.visible = false
-	bear_face.visible = false
