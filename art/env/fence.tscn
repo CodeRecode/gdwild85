@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdknux1do1nei"]
+
+[ext_resource type="PackedScene" uid="uid://cjcai1d6nrt0s" path="res://art/env/fence.glb" id="1_u07lv"]
+
+[node name="Fence" type="Node3D"]
+
+[node name="fence" parent="." instance=ExtResource("1_u07lv")]
+
+[node name="fence2" parent="." instance=ExtResource("1_u07lv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.61)
+
+[node name="fence4" parent="." instance=ExtResource("1_u07lv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.83)
+
+[node name="fence3" parent="." instance=ExtResource("1_u07lv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.22)

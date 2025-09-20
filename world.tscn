@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://djme4w541vtvs"]
+[gd_scene load_steps=42 format=3 uid="uid://djme4w541vtvs"]
 
 [ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="1_26xuy"]
 [ext_resource type="Script" uid="uid://c3c44fr414p6q" path="res://main_menu.gd" id="1_cbp6q"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dudvyv3mb7ghy" path="res://art/env/terrain.tscn" id="17_ikiii"]
 [ext_resource type="PackedScene" uid="uid://dc5rdlsoput3n" path="res://characters/pig_villager/pig_villager.tscn" id="17_udxuc"]
 [ext_resource type="Shader" uid="uid://bk25i277vp8cj" path="res://art/env/water.gdshader" id="22_wukud"]
+[ext_resource type="PackedScene" uid="uid://bdknux1do1nei" path="res://art/env/fence.tscn" id="23_il2jm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 geometry_collision_mask = 4294967041
@@ -177,22 +178,22 @@ collision_mask = 0
 
 [node name="North" type="CollisionShape3D" parent="WorldBoundary"]
 shape = SubResource("WorldBoundaryShape3D_f3sb7")
-debug_color = Color(0.966121, 0, 0.482495, 0.42)
+debug_color = Color(0.339, 0, 0.152, 1)
 
 [node name="South" type="CollisionShape3D" parent="WorldBoundary"]
 transform = Transform3D(-1, 0, 0, 0, -1, 3.55271e-15, 0, -3.55271e-15, -1, 0, 13.6667, -5.97388e-07)
 shape = SubResource("WorldBoundaryShape3D_f3sb7")
-debug_color = Color(0.966121, 0, 0.482495, 0.42)
+debug_color = Color(0.339, 0, 0.152, 1)
 
 [node name="West" type="CollisionShape3D" parent="WorldBoundary"]
 transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, -7.83333, 6.66667, -2.91409e-07)
 shape = SubResource("WorldBoundaryShape3D_f3sb7")
-debug_color = Color(0.966121, 0, 0.482495, 0.42)
+debug_color = Color(0.339, 0, 0.152, 1)
 
 [node name="East" type="CollisionShape3D" parent="WorldBoundary"]
 transform = Transform3D(-9.5534e-16, -1, 4.37113e-08, 1, 1.51496e-15, 4.37113e-08, -4.37113e-08, 4.37113e-08, 1, 7.66667, 6.66667, -2.91409e-07)
 shape = SubResource("WorldBoundaryShape3D_f3sb7")
-debug_color = Color(0.966121, 0, 0.482495, 0.42)
+debug_color = Color(0.339, 0, 0.152, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14.5292)
@@ -732,18 +733,64 @@ node_health = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9652, -0.00012207, -0.999146)
 building = NodePath("../Buildings/Cafe")
 
-[node name="terrain" parent="." instance=ExtResource("17_ikiii")]
+[node name="Environment" type="Node" parent="."]
+
+[node name="terrain" parent="Environment" instance=ExtResource("17_ikiii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.54131)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.6568, -1.08554, 0)
 mesh = SubResource("QuadMesh_bc84e")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_il2jm")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Water2" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.839, -1.07, 37.595)
 mesh = SubResource("QuadMesh_bc84e")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_il2jm")
+
+[node name="Fencing" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.411633, 0, 0)
+
+[node name="Fence" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -44.4522)
+
+[node name="Fence2" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -37.9714)
+
+[node name="Fence3" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -31.5311)
+
+[node name="Fence4" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -25.0504)
+
+[node name="Fence5" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -18.5534)
+
+[node name="Fence6" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -12.0727)
+
+[node name="Fence7" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, -5.59733)
+
+[node name="Fence8" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 0.883383)
+
+[node name="Fence9" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 7.34005)
+
+[node name="Fence10" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 13.8208)
+
+[node name="Fence11" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 20.3225)
+
+[node name="Fence12" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 26.7931)
+
+[node name="Fence13" parent="Environment/Fencing" instance=ExtResource("23_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 33.2948)
 
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="Player" method="_on_main_menu_game_begin"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer/MainMenu" method="_on_start_button_pressed"]
