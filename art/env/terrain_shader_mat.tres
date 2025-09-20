@@ -10,13 +10,13 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_47k70")
-shader_parameter/grass_mult = Color(0.559543, 0.596668, 0.33759, 1)
+shader_parameter/grass_mult = Color(0.647989, 0.688384, 0.414067, 1)
 shader_parameter/grass_tex = ExtResource("2_ej8tl")
 shader_parameter/grass_scale = Vector2(10, 10)
-shader_parameter/dirt_mult = Color(0.86744, 0.733232, 0.576952, 1)
+shader_parameter/dirt_mult = Color(0.92738, 0.841407, 0.743252, 1)
 shader_parameter/dirt_tex = ExtResource("2_xai68")
 shader_parameter/dirt_scale = Vector2(10, 10)
-shader_parameter/rock_mult = Color(0.633757, 0.633757, 0.633757, 1)
+shader_parameter/rock_mult = Color(0.808998, 0.808998, 0.808998, 1)
 shader_parameter/rock_tex = ExtResource("3_16fyd")
 shader_parameter/rock_scale = Vector2(10, 10)
 shader_parameter/dirt_blend_tex = ExtResource("2_j4i26")

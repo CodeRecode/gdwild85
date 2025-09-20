@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://48aeicl5desn"]
+[gd_scene load_steps=40 format=3 uid="uid://48aeicl5desn"]
 
 [ext_resource type="Script" uid="uid://2w6duw55c6c5" path="res://characters/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbkbbkvnak3vo" path="res://art/bear.glb" id="2_xxgcw"]
@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dnqeab3x6avhb" path="res://art/sickle.glb" id="5_ixbpm"]
 [ext_resource type="Texture2D" uid="uid://b4vrn0b8m4tq5" path="res://art/resources/log.png" id="6_rpf03"]
 [ext_resource type="Texture2D" uid="uid://dye1ljnx7g04e" path="res://art/ui/bubble.svg" id="6_x5dtk"]
-[ext_resource type="Texture2D" uid="uid://bqnbc46grx5cj" path="res://art/ui/checkmark.svg" id="7_3t07l"]
 [ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="7_x5dtk"]
 [ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="8_3t07l"]
-[ext_resource type="Texture2D" uid="uid://b4altv4um656f" path="res://art/ui/cross.svg" id="8_gqopd"]
-[ext_resource type="Texture2D" uid="uid://cx45wbt3rfy1w" path="res://art/ui/happyBear.svg" id="9_icpky"]
+[ext_resource type="Texture2D" uid="uid://dlxflu7q1ajl4" path="res://art/ui/checkmark.png" id="11_gqopd"]
+[ext_resource type="Texture2D" uid="uid://cguvkhsume3t5" path="res://art/ui/cross.png" id="12_icpky"]
 [ext_resource type="Texture2D" uid="uid://fa6guitmyxwh" path="res://art/resources/food.png" id="13_gqopd"]
+[ext_resource type="Texture2D" uid="uid://bc1e480yrcpq6" path="res://art/ui/happyBear.png" id="13_icpky"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gv5m4"]
 radius = 0.364801
@@ -123,27 +123,6 @@ states/Wave/position = Vector2(275, -30)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c6leb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dirf7"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_xxgcw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_exd8k"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_5dc8e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ixbpm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_idpv6"), "Chop", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf03"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_x5dtk"), "Gather", "Idle", SubResource("AnimationNodeStateMachineTransition_3t07l"), "Chop_Bounce", "Idle", SubResource("AnimationNodeStateMachineTransition_on558"), "Throw", "Idle", SubResource("AnimationNodeStateMachineTransition_gqopd"), "Floss", "Idle", SubResource("AnimationNodeStateMachineTransition_icpky")]
 graph_offset = Vector2(-224, -132)
 
-[sub_resource type="QuadMesh" id="QuadMesh_x5dtk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t07l"]
-transparency = 1
-cull_mode = 1
-albedo_texture = ExtResource("6_x5dtk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_on558"]
-transparency = 1
-cull_mode = 2
-albedo_texture = ExtResource("7_3t07l")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58jvb"]
-transparency = 1
-cull_mode = 2
-albedo_texture = ExtResource("8_gqopd")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8l73k"]
-transparency = 1
-albedo_texture = ExtResource("9_icpky")
-
 [sub_resource type="LabelSettings" id="LabelSettings_rpf03"]
 outline_size = 1
 outline_color = Color(0.05, 0.05, 0.05, 1)
@@ -170,11 +149,11 @@ near = 0.001
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(0.0433493, 1.41441, 0)
+bones/1/position = Vector3(0.0325563, 1.41441, 0)
 bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/2/rotation = Quaternion(0.706814, 0.00186192, -0.00215064, 0.707394)
-bones/4/rotation = Quaternion(-6.42578e-05, -1.81364e-05, -0.000252055, 1)
-bones/5/rotation = Quaternion(-0.00128698, -0.000640109, -0.00889773, 0.999959)
+bones/2/rotation = Quaternion(0.706483, 0.00141705, -0.00163679, 0.707727)
+bones/4/rotation = Quaternion(-0.000265501, -4.54459e-05, -0.000631595, 1)
+bones/5/rotation = Quaternion(-0.00271617, -0.000480759, -0.00668313, 0.999974)
 bones/6/position = Vector3(0.185896, 0.389199, 0.302)
 bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
@@ -187,22 +166,22 @@ bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
 bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
 bones/16/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/17/rotation = Quaternion(0.857382, 0.501469, 0.0213233, 0.113885)
-bones/18/rotation = Quaternion(0.079235, -0.000203877, -0.00339854, 0.99685)
-bones/20/rotation = Quaternion(0.847215, -0.523333, 0.0145042, 0.0902222)
-bones/21/rotation = Quaternion(0.00232716, 9.46132e-05, 0.00222383, 0.999995)
+bones/17/rotation = Quaternion(0.855955, 0.504322, 0.0179341, 0.112598)
+bones/18/rotation = Quaternion(0.0746761, -0.000203949, -0.00320301, 0.997203)
+bones/20/rotation = Quaternion(0.848978, -0.520773, 0.0126816, 0.0887191)
+bones/21/rotation = Quaternion(0.00257676, 9.51687e-05, 0.00222381, 0.999994)
 bones/23/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/23/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 bones/25/position = Vector3(-0.575712, 0.737437, 1.18014)
 
 [node name="Basket" parent="animalchar/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999984, 0.00567476, -0.000405982, -0.00567442, 0.999984, 0.000821829, 0.000410639, -0.000819504, 1, 0.0505332, 2.55139, -1.78269)
+transform = Transform3D(0.999991, 0.00431905, -0.000306953, -0.0043185, 0.999989, 0.00176096, 0.000314554, -0.00175959, 0.999998, 0.0380203, 2.54972, -1.78376)
 
 [node name="Straps" parent="animalchar/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.0875559, 0.00763417, -0.483078, -0.000457277, 1.34526, 0.00345895, 0.0483089, -0.00110247, 0.875571, -0.47334, 2.88438, -0.865996)
+transform = Transform3D(0.0875613, 0.00581035, -0.482994, -0.000293194, 1.34527, 0.00362686, 0.0483005, -0.00236715, 0.875616, -0.486212, 2.88287, -0.867324)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.960722, 0.179799, -0.211387, -0.222646, -0.0446973, 0.973874, 0.165653, 0.982687, 0.0829733, -1.15925, 2.11522, 0.0277516)
+transform = Transform3D(-0.960582, 0.179871, -0.211964, -0.222997, -0.0432712, 0.973858, 0.165997, 0.982738, 0.0816762, -1.17163, 2.11454, 0.0274856)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
@@ -238,51 +217,6 @@ anim_player = NodePath("../animalchar/AnimationPlayer")
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 gui_disable_input = true
-
-[node name="Control" type="Control" parent="SubViewport"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="SubViewport/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Bubble" type="MeshInstance3D" parent="SubViewport/Control/Panel"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.317, 2, 0)
-visible = false
-mesh = SubResource("QuadMesh_x5dtk")
-surface_material_override/0 = SubResource("StandardMaterial3D_3t07l")
-
-[node name="GreenCheck" type="MeshInstance3D" parent="SubViewport/Control/Panel/Bubble"]
-transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0.069, 0)
-sorting_offset = 0.18
-mesh = SubResource("QuadMesh_x5dtk")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_on558")
-
-[node name="RedX" type="MeshInstance3D" parent="SubViewport/Control/Panel/Bubble"]
-transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0.069, 0)
-visible = false
-mesh = SubResource("QuadMesh_x5dtk")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_58jvb")
-
-[node name="BearFace" type="MeshInstance3D" parent="SubViewport/Control/Panel/Bubble"]
-transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0.069, 0)
-visible = false
-mesh = SubResource("QuadMesh_x5dtk")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8l73k")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -393,6 +327,44 @@ text = "x0"
 label_settings = SubResource("LabelSettings_rpf03")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Bubble" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 125.0
+grow_vertical = 0
+texture = ExtResource("6_x5dtk")
+expand_mode = 5
+
+[node name="GreenCheck" type="TextureRect" parent="HUD/Bubble"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 28.0
+offset_right = 99.0
+offset_bottom = 88.0
+texture = ExtResource("11_gqopd")
+
+[node name="RedX" type="TextureRect" parent="HUD/Bubble"]
+visible = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 100.0
+offset_bottom = 96.0
+texture = ExtResource("12_icpky")
+
+[node name="BearFace" type="TextureRect" parent="HUD/Bubble"]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 25.0
+offset_right = 106.0
+offset_bottom = 103.0
+texture = ExtResource("13_icpky")
+expand_mode = 3
+stretch_mode = 3
 
 [connection signal="body_entered" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_body_entered"]
 [connection signal="body_exited" from="animalchar/InteractableDetector" to="." method="_on_interactable_detector_body_exited"]

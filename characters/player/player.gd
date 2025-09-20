@@ -9,10 +9,10 @@ class_name Player
 @onready var hammer: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/hammer
 @onready var sickle: Node3D = $animalchar/Armature/Skeleton3D/ToolNode/sickle
 
-@onready var bubble: MeshInstance3D = $SubViewport/Control/Panel/Bubble
-@onready var green_check: MeshInstance3D = $SubViewport/Control/Panel/Bubble/GreenCheck
-@onready var red_x: MeshInstance3D = $SubViewport/Control/Panel/Bubble/RedX
-@onready var bear_face: MeshInstance3D = $SubViewport/Control/Panel/Bubble/BearFace
+@onready var bubble: TextureRect = $HUD/Bubble
+@onready var green_check: TextureRect = $HUD/Bubble/GreenCheck
+@onready var red_x: TextureRect = $HUD/Bubble/RedX
+@onready var bear_face: TextureRect = $HUD/Bubble/BearFace
 
 @onready var logs_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Logs/LogsAmount
 @onready var stone_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Stone/StoneAmount
@@ -88,8 +88,11 @@ func _read_movement_input() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	bubble.global_position.x = global_position.x - 0.31
-	bubble.global_position.z = global_position.z
+	var camera = get_viewport().get_camera_3d()
+	var screen_pos = camera.unproject_position(global_position + Vector3.UP)
+	bubble.position = screen_pos - Vector2(-20., 20. + bubble.size.y)
+	#bubble.global_position.x = global_position.x - 0.31
+	#bubble.global_position.z = global_position.z
 
 
 func _on_interactable_detector_body_entered(node: Node) -> void:
