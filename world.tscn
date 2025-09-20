@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://djme4w541vtvs"]
+[gd_scene load_steps=24 format=3 uid="uid://djme4w541vtvs"]
 
 [ext_resource type="PackedScene" uid="uid://48aeicl5desn" path="res://characters/player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://dobyixeqcl641" path="res://art/env/ground_grass.png" id="1_ioo17"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d4a1prbrlashq" path="res://resource_nodes/mushroom/mushroom.tscn" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://d4j014tlow4hg" path="res://resource_nodes/tree/tree_orange.tscn" id="15_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://cep1we1ld8pd6" path="res://resource_nodes/tree/tree_yellow.tscn" id="16_udxuc"]
+[ext_resource type="PackedScene" uid="uid://dudvyv3mb7ghy" path="res://art/env/terrain.tscn" id="17_ikiii"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 geometry_collision_mask = 4294967041
@@ -29,7 +30,6 @@ sky_material = SubResource("ProceduralSkyMaterial_gv5m4")
 
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 2
-background_energy_multiplier = 1.1
 sky = SubResource("Sky_f3sb7")
 ambient_light_source = 3
 tonemap_mode = 2
@@ -41,7 +41,7 @@ fog_density = 1.0
 fog_depth_curve = 2.21914
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
-albedo_color = Color(0.527147, 0.56, 0.3136, 1)
+albedo_color = Color(0.448239, 0.477239, 0.256692, 1)
 albedo_texture = ExtResource("1_ioo17")
 uv1_scale = Vector3(10, 10, 10)
 
@@ -55,6 +55,7 @@ environment = SubResource("Environment_fj7yv")
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_f3sb7")
 use_collision = true
 collision_mask = 0
@@ -63,7 +64,7 @@ size = Vector3(150, 1, 150)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.686686, 0.479307, -0.54656, -0.070713, 0.792324, 0.605988, 0.723507, -0.377475, 0.577971, 0, 21.6222, 13)
 light_color = Color(1, 0.959972, 0.95901, 1)
-light_energy = 0.45
+light_energy = 0.2
 shadow_enabled = true
 
 [node name="WorldBoundary" type="StaticBody3D" parent="."]
@@ -618,3 +619,6 @@ node_health = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -15)
 resource_amount = 1
 node_health = 4
+
+[node name="terrain" parent="." instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.54131)

@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dga12eh3g0tmt"]
+
+[ext_resource type="Shader" uid="uid://ctpnmblai7e2s" path="res://art/env/terrain_shader.gdshader" id="1_47k70"]
+[ext_resource type="Texture2D" uid="uid://dobyixeqcl641" path="res://art/env/ground_grass.png" id="2_ej8tl"]
+[ext_resource type="Texture2D" uid="uid://doyhbuey761lk" path="res://art/env/DirtBlend.png" id="2_j4i26"]
+[ext_resource type="Texture2D" uid="uid://d2u0xau7t6jxy" path="res://art/env/ground_dirt.png" id="2_xai68"]
+[ext_resource type="Texture2D" uid="uid://dno72csfivopj" path="res://art/env/ground_rock.png" id="3_16fyd"]
+[ext_resource type="Texture2D" uid="uid://dc83okocehfbp" path="res://art/env/RockBlend.png" id="5_ue0fp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_47k70")
+shader_parameter/grass_mult = Color(0.559543, 0.596668, 0.33759, 1)
+shader_parameter/grass_tex = ExtResource("2_ej8tl")
+shader_parameter/grass_scale = Vector2(10, 10)
+shader_parameter/dirt_mult = Color(0.86744, 0.733232, 0.576952, 1)
+shader_parameter/dirt_tex = ExtResource("2_xai68")
+shader_parameter/dirt_scale = Vector2(10, 10)
+shader_parameter/rock_mult = Color(0.633757, 0.633757, 0.633757, 1)
+shader_parameter/rock_tex = ExtResource("3_16fyd")
+shader_parameter/rock_scale = Vector2(10, 10)
+shader_parameter/dirt_blend_tex = ExtResource("2_j4i26")
+shader_parameter/rock_blend_tex = ExtResource("5_ue0fp")

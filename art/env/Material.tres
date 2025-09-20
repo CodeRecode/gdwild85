@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cf1quupxt0m1v"]
+
+[ext_resource type="Texture2D" uid="uid://csmn05k8p7ydo" path="res://art/terrain_ground_grass.png" id="1_ljf3b"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.447059, 0.478431, 0.254902, 1)
+albedo_texture = ExtResource("1_ljf3b")
+uv1_scale = Vector3(10, 10, 1)
+uv1_offset = Vector3(0, -9, 0)
