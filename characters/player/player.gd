@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+
 @onready var animalchar: Node3D = $animalchar
 @onready var animation_tree: AnimationTree = $AnimationTree
 
@@ -14,6 +15,7 @@ class_name Player
 @onready var red_x: TextureRect = $HUD/Bubble/RedX
 @onready var bear_face: TextureRect = $HUD/Bubble/BearFace
 
+@onready var hud: CanvasLayer = $HUD
 @onready var logs_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Logs/LogsAmount
 @onready var stone_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Stone/StoneAmount
 @onready var thatch_amount_label: Label = $HUD/Control/MarginContainer/HBoxContainer/Thatch/ThatchAmount
@@ -34,6 +36,9 @@ var houses_built: Dictionary = {}
 
 
 func _ready() -> void:
+	visible = false
+	hud.hide()
+
 	for type in ResourceCost.ResourceType.values():
 		inventory[type] = 0
 
@@ -242,3 +247,8 @@ func _show_bubble(override:bool, show: bool, check: bool, x: bool, face: bool) -
 	if check: green_check.visible = show
 	elif x: red_x.visible = show
 	elif face: bear_face.visible = show
+
+
+func _on_main_menu_game_begin() -> void:
+	visible = true
+	hud.show()
