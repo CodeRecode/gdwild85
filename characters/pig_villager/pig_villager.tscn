@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc5rdlsoput3n"]
 
-[ext_resource type="PackedScene" uid="uid://bssohkegj4ou5" path="res://art/pig.glb" id="1_6u58w"]
+[ext_resource type="PackedScene" uid="uid://bssohkegj4ou5" path="res://art/characters/pig.glb" id="1_6u58w"]
 [ext_resource type="Script" uid="uid://cy521jbudqsud" path="res://characters/pig_villager/villager.gd" id="1_uc8ly"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6u58w"]

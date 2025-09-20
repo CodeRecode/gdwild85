@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckopky73hl0nt"
-path.s3tc="res://.godot/imported/terrain_BearText.png-25209f1ec9e19fec1a387574e501ddf9.s3tc.ctex"
+uid="uid://cy8nxgwdn7w6w"
+path.s3tc="res://.godot/imported/bear_BearText.png-cf947f552e28c215649b02d086153ca0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://art/terrain_BearText.png"
-dest_files=["res://.godot/imported/terrain_BearText.png-25209f1ec9e19fec1a387574e501ddf9.s3tc.ctex"]
+source_file="res://art/characters/bear_BearText.png"
+dest_files=["res://.godot/imported/bear_BearText.png-cf947f552e28c215649b02d086153ca0.s3tc.ctex"]
 
 [params]
 

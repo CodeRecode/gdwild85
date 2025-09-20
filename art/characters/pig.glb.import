@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bssohkegj4ou5"
-path="res://.godot/imported/pig.glb-e1a85844eb96b8f948e1cc486d054e5c.scn"
+path="res://.godot/imported/pig.glb-184cdeac0067948c662f0a804a5b8e8a.scn"
 
 [deps]
 
-source_file="res://art/pig.glb"
-dest_files=["res://.godot/imported/pig.glb-e1a85844eb96b8f948e1cc486d054e5c.scn"]
+source_file="res://art/characters/pig.glb"
+dest_files=["res://.godot/imported/pig.glb-184cdeac0067948c662f0a804a5b8e8a.scn"]
 
 [params]
 

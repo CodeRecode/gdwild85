@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bbkbbkvnak3vo"
-path="res://.godot/imported/bear.glb-4ae946b09d29cede8aef618c2ec9c89a.scn"
+path="res://.godot/imported/bear.glb-75dd9ad1d0d42d959c02624cfc22996d.scn"
 
 [deps]
 
-source_file="res://art/bear.glb"
-dest_files=["res://.godot/imported/bear.glb-4ae946b09d29cede8aef618c2ec9c89a.scn"]
+source_file="res://art/characters/bear.glb"
+dest_files=["res://.godot/imported/bear.glb-75dd9ad1d0d42d959c02624cfc22996d.scn"]
 
 [params]
 
@@ -10827,6 +10827,16 @@ _subresources={
 "slice_99/save_to_file/path": "",
 "slice_99/start_frame": 0,
 "slices/amount": 0
+}
+},
+"materials": {
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://art/characters/Material.001.tres"
+},
+"Material.002": {
+"use_external/enabled": false,
+"use_external/path": "res://art/characters/Material.002.tres"
 }
 }
 }

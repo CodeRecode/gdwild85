@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3mfxw5h840l"
-path.s3tc="res://.godot/imported/pig_PigTex.png-fce116a340911af13bd87de13268bbfc.s3tc.ctex"
+uid="uid://bos3260jtbfac"
+path.s3tc="res://.godot/imported/bear_Basket_tex.png-71f27fcff879a6915daa9164850918e6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c2fa761bd3768e1464a9a339190bbebe"
+"md5": "4fd23e7abbe0a20b40c8d660e247f373"
 }
 
 [deps]
 
-source_file="res://art/pig_PigTex.png"
-dest_files=["res://.godot/imported/pig_PigTex.png-fce116a340911af13bd87de13268bbfc.s3tc.ctex"]
+source_file="res://art/characters/bear_Basket_tex.png"
+dest_files=["res://.godot/imported/bear_Basket_tex.png-71f27fcff879a6915daa9164850918e6.s3tc.ctex"]
 
 [params]
 
