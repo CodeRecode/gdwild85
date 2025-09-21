@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc5rdlsoput3n"]
+[gd_scene load_steps=6 format=3 uid="uid://dc5rdlsoput3n"]
 
 [ext_resource type="PackedScene" uid="uid://bssohkegj4ou5" path="res://art/characters/pig.glb" id="1_6u58w"]
 [ext_resource type="Script" uid="uid://cy521jbudqsud" path="res://characters/pig_villager/villager.gd" id="1_uc8ly"]
@@ -9,10 +9,13 @@ height = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6u58w"]
 
-[node name="PigVillager" type="CharacterBody3D"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uc8ly"]
+
+[node name="PigVillager" type="CharacterBody3D" node_paths=PackedStringArray("animation_player")]
 collision_layer = 32
 collision_mask = 15
 script = ExtResource("1_uc8ly")
+animation_player = NodePath("pig/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -21,6 +24,29 @@ debug_color = Color(0.843137, 0.34902, 0.407843, 0.862745)
 
 [node name="pig" parent="." instance=ExtResource("1_6u58w")]
 transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0, 0)
+
+[node name="Skeleton3D" parent="pig/Pig" index="0"]
+bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/6/position = Vector3(0.185896, 0.389199, 0.302)
+bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
+bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
+bones/7/rotation = Quaternion(0.0266705, 0.185064, -0.449121, 0.873688)
+bones/8/rotation = Quaternion(0.024959, 0.0439738, -0.199483, 0.978596)
+bones/9/position = Vector3(-0.185896, 0.389199, 0.302)
+bones/9/rotation = Quaternion(-0.205954, -0.0476917, 0.76801, 0.60454)
+bones/10/position = Vector3(0.118206, 0.862694, 0.116804)
+bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
+bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
+bones/12/rotation = Quaternion(0.572871, 0.122661, -0.0663848, 0.807691)
+bones/13/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
+bones/14/rotation = Quaternion(0.851716, 0.512965, 0.00649546, 0.106792)
+bones/15/rotation = Quaternion(0.051679, -0.000204247, -0.00221661, 0.998661)
+bones/17/rotation = Quaternion(0.851716, -0.512965, -0.00649593, 0.106792)
+bones/18/rotation = Quaternion(0.0516807, 0.000204259, 0.00221645, 0.998661)
+bones/20/position = Vector3(0.575712, 0.737437, 1.18014)
+bones/20/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
+bones/22/position = Vector3(-0.575712, 0.737437, 1.18014)
 
 [node name="ProximityDetector" type="Area3D" parent="."]
 collision_layer = 0
@@ -36,5 +62,11 @@ target_desired_distance = 0.25
 path_max_distance = 1.01
 avoidance_enabled = true
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_uc8ly")
+advance_expression_base_node = NodePath("..")
+
 [connection signal="body_entered" from="ProximityDetector" to="." method="_on_proximity_detector_body_entered"]
 [connection signal="body_exited" from="ProximityDetector" to="." method="_on_proximity_detector_body_exited"]
+
+[editable path="pig"]

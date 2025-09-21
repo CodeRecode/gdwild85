@@ -5,6 +5,7 @@ class_name Villager
 @export var building: Building
 
 @onready var collision: CollisionShape3D = $CollisionShape3D
+@export var animation_player: AnimationPlayer
 
 var player: Player = null
 
@@ -18,6 +19,7 @@ var player: Player = null
 func _ready() -> void:
 	self.visible = false
 	collision.disabled = true
+	animation_player.play("Idle")
 	##randomize()
 #
 #
@@ -28,6 +30,9 @@ func _physics_process(_delta: float) -> void:
 
 	if player != null:
 		self.look_at(player.global_position)
+		animation_player.play("Wave")
+	elif player == null:
+		animation_player.play("Idle")
 
 	##wander_timer -= delta
 #
@@ -69,3 +74,7 @@ func _on_proximity_detector_body_exited(body: Node3D) -> void:
 #
 	#var destination = NavigationServer3D.map_get_closest_point(nav_region.get_navigation_map(), global_position + random_offset)
 	#nav_agent.target_position = destination
+
+
+func _on_player_all_buildings_complete() -> void:
+	animation_player.play("Floss")

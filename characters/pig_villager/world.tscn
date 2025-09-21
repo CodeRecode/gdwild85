@@ -850,3 +850,4 @@ autoplay = true
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="Player" method="_on_main_menu_game_begin"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer/MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/CreditsButton" to="CanvasLayer/MainMenu" method="_on_credits_button_pressed"]
+[connection signal="all_buildings_complete" from="Player" to="PigVillager" method="_on_player_all_buildings_complete"]
