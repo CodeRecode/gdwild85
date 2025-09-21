@@ -148,7 +148,7 @@ func _check_gather_resources() -> void:
 	if Input.is_action_just_pressed("interact"):
 		var pos_delta = animalchar.global_position - detected_resource_node.global_position;
 		animalchar.look_at(animalchar.global_position + pos_delta.normalized())
-		var damage: int = 100
+		var damage: int = 1
 
 		damage *= houses_built[4]
 		damage *= houses_built[5]
