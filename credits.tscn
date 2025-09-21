@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpl8sn3col4hi"]
+
+[ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="1_nm7lk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_26xuy"]
+texture = ExtResource("1_nm7lk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bc84e"]
+texture = ExtResource("1_nm7lk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wukud"]
+texture = ExtResource("1_nm7lk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_il2jm"]
+texture = ExtResource("1_nm7lk")
+
+[sub_resource type="Theme" id="Theme_il2jm"]
+Button/colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
+Button/colors/font_focus_color = Color(0.223788, 0.119774, 0.0513562, 1)
+Button/colors/font_hover_color = Color(0.370898, 0.2127, 0.108832, 1)
+Button/colors/font_pressed_color = Color(0.219312, 0.116959, 0.0496312, 1)
+Button/font_sizes/font_size = 30
+Button/icons/icon = null
+Button/styles/focus = SubResource("StyleBoxTexture_26xuy")
+Button/styles/hover = SubResource("StyleBoxTexture_bc84e")
+Button/styles/normal = SubResource("StyleBoxTexture_wukud")
+Button/styles/pressed = SubResource("StyleBoxTexture_il2jm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbp6q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Credits" type="PanelContainer"]
+process_mode = 3
+visible = false
+light_mask = 0
+anchors_preset = -1
+anchor_left = 0.155
+anchor_right = 0.845
+anchor_bottom = 1.0
+offset_left = 0.440002
+offset_right = -0.440063
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_il2jm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbp6q")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_nm7lk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
+theme_override_font_sizes/font_size = 30
+text = "A game by 2Dads
+Davideogame - Art, Programming
+Shibusuke - Design, Programming"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="license stuff" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
+theme_override_font_sizes/font_size = 30
+text = "\"Sunny and Happy - Acoustic Joy\" 
+by Dvir Silverstone from Pixabay
+
+Sound Effects by freesound_community
+ from Pixabay"
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back"

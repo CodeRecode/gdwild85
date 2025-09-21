@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://djme4w541vtvs"]
+[gd_scene load_steps=46 format=3 uid="uid://djme4w541vtvs"]
 
 [ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="1_26xuy"]
 [ext_resource type="Script" uid="uid://c3c44fr414p6q" path="res://main_menu.gd" id="1_cbp6q"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bgjtfofcqtxt0" path="res://buildings/houses/cafe/cafe.tscn" id="2_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://pwd3sqk2lnfa" path="res://buildings/player_tent/player_tent.tscn" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bydr3o7g0gg25" path="res://buildings/houses/foodstorage/foodstorage.tscn" id="3_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://cpl8sn3col4hi" path="res://credits.tscn" id="4_4h6ng"]
 [ext_resource type="PackedScene" uid="uid://b1wl5u0ybnj4p" path="res://resource_nodes/berries/berries.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://cgj4cydfoay3" path="res://resource_nodes/tree/tree_red.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://cnthwc4b5absq" path="res://buildings/houses/generalstore/generalstore.tscn" id="4_ioo17"]
@@ -170,74 +171,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Credits"
 
-[node name="Credits" type="PanelContainer" parent="CanvasLayer"]
-process_mode = 3
-visible = false
-light_mask = 0
-anchors_preset = -1
-anchor_left = 0.155
-anchor_right = 0.845
-anchor_bottom = 1.0
-offset_left = 0.440002
-offset_right = -0.440063
-offset_bottom = -93.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource("Theme_il2jm")
-theme_override_styles/panel = SubResource("StyleBoxFlat_cbp6q")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Credits"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Credits/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("1_26xuy")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Credits/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Control3" type="Control" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
-theme_override_font_sizes/font_size = 30
-text = "A game by 2Dads
-Davideogame - Art, Programming
-Shibusuke - Design, Programming"
-horizontal_alignment = 1
-
-[node name="Control" type="Control" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="license stuff" type="Label" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
-theme_override_font_sizes/font_size = 30
-text = "\"Sunny and Happy - Acoustic Joy\" 
-by Dvir Silverstone from Pixabay
-
-Sound Effects by freesound_community
- from Pixabay"
-
-[node name="Control2" type="Control" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="BackButton" type="Button" parent="CanvasLayer/Credits"]
-custom_minimum_size = Vector2(300, 75)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "Back"
+[node name="Credits" parent="CanvasLayer" instance=ExtResource("4_4h6ng")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fj7yv")
@@ -901,4 +835,3 @@ autoplay = true
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="Player" method="_on_main_menu_game_begin"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer/MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/CreditsButton" to="CanvasLayer/MainMenu" method="_on_credits_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Credits/BackButton" to="CanvasLayer/MainMenu" method="_on_credits_back_button_pressed"]
