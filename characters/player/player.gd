@@ -2,6 +2,11 @@ extends CharacterBody3D
 class_name Player
 
 
+@onready var axe_sfx: AudioStreamPlayer3D = $AxeSFX
+@onready var stone_sfx: AudioStreamPlayer3D = $StoneSFX
+@onready var thatch_sfx: AudioStreamPlayer3D = $ThatchSFX
+@onready var food_sfx: AudioStreamPlayer3D = $FoodSFX
+
 @onready var animalchar: Node3D = $animalchar
 @onready var animation_tree: AnimationTree = $AnimationTree
 
@@ -140,14 +145,18 @@ func _check_gather_resources() -> void:
 			ResourceCost.ResourceType.WOOD:
 				axe.visible = true
 				animation_state_machine.start("Chop_Bounce")
+				axe_sfx.play(0)
 			ResourceCost.ResourceType.STONE:
 				hammer.visible = true
 				animation_state_machine.start("Chop_Bounce")
+				stone_sfx.play(0)
 			ResourceCost.ResourceType.THATCH:
 				sickle.visible = true
 				animation_state_machine.start("Chop")
+				thatch_sfx.play(0)
 			ResourceCost.ResourceType.FOOD:
 				animation_state_machine.start("Gather")
+				food_sfx.play(0)
 
 		detected_resource_node.shake()
 

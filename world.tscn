@@ -121,7 +121,7 @@ navigation_mesh = SubResource("NavigationMesh_gv5m4")
 [node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
 process_mode = 3
 light_mask = 0
-anchors_preset = -1
+anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
@@ -218,7 +218,10 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
 theme_override_font_sizes/font_size = 30
 text = "\"Sunny and Happy - Acoustic Joy\" 
-by Dvir Silverstone from Pixabay"
+by Dvir Silverstone from Pixabay
+
+Sound Effects by freesound_community
+ from Pixabay"
 
 [node name="Control2" type="Control" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
@@ -887,6 +890,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6742, 0.0206912, 33.2948)
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("26_bo7i5")
+volume_db = -15.0
 autoplay = true
 
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="Player" method="_on_main_menu_game_begin"]
