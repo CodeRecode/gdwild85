@@ -20,11 +20,11 @@ enum BuildingType {
 @onready var plot_mesh: Node3D = $plot
 @onready var tent_mesh: Node3D = $tent
 
-@onready var recipe_board: MeshInstance3D = $RecipeBoard
-@onready var logs_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Logs/LogsAmount
-@onready var stone_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Stone/StoneAmount
-@onready var thatch_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Thatch/ThatchAmount
-@onready var food_amount_label: Label = $SubViewport/Control/Panel/HBoxContainer/Food/FoodAmount
+@onready var recipe_board: VBoxContainer = $RecipeBoard
+@onready var logs_amount_label: Label = $RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Logs/LogsAmount
+@onready var stone_amount_label: Label = $RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Stone/StoneAmount
+@onready var thatch_amount_label: Label = $RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Thatch/ThatchAmount
+@onready var food_amount_label: Label = $RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Food/FoodAmount
 
 
 func _ready() -> void:
@@ -40,6 +40,12 @@ func _ready() -> void:
 		plot_mesh.visible = false
 		tent_mesh.visible = true
 
+
+func _process(delta: float) -> void:
+	var camera = get_viewport().get_camera_3d()
+	var screen_pos = camera.unproject_position(global_position + Vector3.UP)
+	recipe_board.position = screen_pos - Vector2(recipe_board.size.x / 2.,0.)
+	
 
 func check_can_build(player_inventory: Dictionary) -> bool:
 	for cost in build_cost:
