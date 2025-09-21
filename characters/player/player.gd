@@ -76,7 +76,7 @@ func _read_movement_input() -> void:
 	if input_dir.length() >= 0.2:
 		animalchar.look_at(animalchar.global_position - direction)
 
-	var should_run = Input.is_action_pressed("run_modifier") or abs(input_h_axis) >= 0.7 or abs(input_v_axis) >= 0.7
+	var should_run = Input.is_action_pressed("run_modifier") or abs(input_axis.length()) >= 0.7
 
 	running = false
 	walking = false
@@ -148,6 +148,8 @@ func _check_gather_resources() -> void:
 				animation_state_machine.start("Chop")
 			ResourceCost.ResourceType.FOOD:
 				animation_state_machine.start("Gather")
+
+		detected_resource_node.shake()
 
 		await animation_tree.animation_finished
 

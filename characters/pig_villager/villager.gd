@@ -51,13 +51,11 @@ func _physics_process(_delta: float) -> void:
 func _on_proximity_detector_body_entered(body: Node3D) -> void:
 	if body is Player:
 		player = body
-		print("wave at player")
 
 
 func _on_proximity_detector_body_exited(body: Node3D) -> void:
 	if body is Player:
 		player = null
-		print("bye player")
 
 
 #func _pick_new_destination() -> void:

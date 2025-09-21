@@ -149,11 +149,11 @@ near = 0.001
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="animalchar/Armature" index="0"]
-bones/1/position = Vector3(-0.0877148, 1.41441, 0)
+bones/1/position = Vector3(-0.00731516, 1.41441, 0)
 bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/2/rotation = Quaternion(0.706524, -0.00354714, 0.00409718, 0.707669)
-bones/4/rotation = Quaternion(-0.000179137, 5.38376e-05, 0.000748222, 1)
-bones/5/rotation = Quaternion(-0.00258834, 0.00128774, 0.017895, 0.999836)
+bones/2/rotation = Quaternion(0.707046, -0.000389565, 0.000449973, 0.707167)
+bones/4/rotation = Quaternion(-3.01117e-05, 1.49796e-05, 0.000208183, 1)
+bones/5/rotation = Quaternion(-0.00021717, 0.000108154, 0.00150144, 0.999999)
 bones/6/position = Vector3(0.185896, 0.389199, 0.302)
 bones/6/rotation = Quaternion(-0.205954, 0.0476917, -0.76801, 0.60454)
 bones/7/position = Vector3(-0.118206, 0.862694, 0.116804)
@@ -166,22 +166,22 @@ bones/10/rotation = Quaternion(0.0266705, -0.185064, 0.449121, 0.873688)
 bones/11/rotation = Quaternion(0.0249591, -0.0439738, 0.199483, 0.978596)
 bones/12/rotation = Quaternion(0.686783, -4.07164e-08, 0.128772, 0.715365)
 bones/16/rotation = Quaternion(0.0835974, -0.00123801, -0.515194, 0.852986)
-bones/17/rotation = Quaternion(0.839441, 0.534628, -0.0228863, 0.094798)
-bones/18/rotation = Quaternion(0.00282996, -0.00020452, -0.000121381, 0.999996)
-bones/20/rotation = Quaternion(0.863399, -0.490554, -0.0317103, 0.113546)
-bones/21/rotation = Quaternion(0.0883116, 0.000285498, 0.00220746, 0.99609)
+bones/17/rotation = Quaternion(0.850937, 0.514943, 0.00273796, 0.103603)
+bones/18/rotation = Quaternion(0.0424904, -0.000204336, -0.0018225, 0.999095)
+bones/20/rotation = Quaternion(0.852534, -0.511135, -0.00950332, 0.1088)
+bones/21/rotation = Quaternion(0.0583115, 0.000218973, 0.00221505, 0.998296)
 bones/23/position = Vector3(0.575712, 0.737437, 1.18014)
 bones/23/rotation = Quaternion(0.0157379, 0.703302, 0.710546, -0.0155774)
 bones/25/position = Vector3(-0.575712, 0.737437, 1.18014)
 
 [node name="Basket" parent="animalchar/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999941, -0.0108112, 0.00076911, 0.0108099, 0.99994, 0.00162357, -0.000786617, -0.00161517, 0.999998, -0.101393, 2.54991, -1.78359)
+transform = Transform3D(0.999999, -0.00118729, 8.53282e-05, 0.00118728, 0.999999, 0.000171602, -8.5532e-05, -0.000171483, 1, -0.00881889, 2.55257, -1.78195)
 
 [node name="Straps" parent="animalchar/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.0876089, -0.0145441, -0.482028, 0.00102507, 1.34521, -0.0037964, 0.048204, -0.00217286, 0.876148, -0.629595, 2.87497, -0.866534)
+transform = Transform3D(0.087581, -0.00159725, -0.482655, 0.000112262, 1.34529, -0.000422852, 0.0482655, -0.000230693, 0.875811, -0.534509, 2.88136, -0.864785)
 
 [node name="ToolNode" type="BoneAttachment3D" parent="animalchar/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.956221, 0.181903, -0.229242, -0.240193, -0.0403435, 0.969887, 0.167176, 0.982488, 0.0822691, -1.29996, 2.09293, 0.0290137)
+transform = Transform3D(-0.958867, 0.180695, -0.218913, -0.230235, -0.0439996, 0.97214, 0.166029, 0.982554, 0.0837921, -1.2139, 2.10582, 0.0288226)
 rotation_edit_mode = 1
 bone_name = "Attatch"
 bone_idx = 12
@@ -329,8 +329,8 @@ visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 125.0
+offset_top = -64.0
+offset_right = 62.5
 grow_vertical = 0
 texture = ExtResource("6_x5dtk")
 expand_mode = 5
@@ -338,28 +338,31 @@ expand_mode = 5
 [node name="GreenCheck" type="TextureRect" parent="HUD/Bubble"]
 visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 28.0
-offset_right = 99.0
-offset_bottom = 88.0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 88.0
+offset_bottom = 72.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_gqopd")
 
 [node name="RedX" type="TextureRect" parent="HUD/Bubble"]
 visible = false
 layout_mode = 0
-offset_left = 25.0
-offset_top = 21.0
-offset_right = 100.0
-offset_bottom = 96.0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 88.0
+offset_bottom = 87.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_icpky")
 
 [node name="BearFace" type="TextureRect" parent="HUD/Bubble"]
 visible = false
 layout_mode = 0
-offset_left = 19.0
-offset_top = 25.0
-offset_right = 106.0
-offset_bottom = 103.0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 97.36
+offset_bottom = 89.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_icpky")
 expand_mode = 3
 stretch_mode = 3

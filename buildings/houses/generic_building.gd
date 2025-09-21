@@ -45,7 +45,8 @@ func _process(delta: float) -> void:
 	var camera = get_viewport().get_camera_3d()
 	var screen_pos = camera.unproject_position(global_position + Vector3.UP)
 	recipe_board.position = screen_pos - Vector2(recipe_board.size.x / 2.,0.)
-	
+	recipe_board.position.y -= 150.0
+
 
 func check_can_build(player_inventory: Dictionary) -> bool:
 	for cost in build_cost:

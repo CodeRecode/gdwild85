@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsko7ff5b1ei1"]
+[gd_scene load_steps=9 format=3 uid="uid://dsko7ff5b1ei1"]
 
 [ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="1_v8da6"]
 [ext_resource type="Texture2D" uid="uid://b4vrn0b8m4tq5" path="res://art/resources/log.png" id="2_rv656"]
 [ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="3_yet8f"]
 [ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="4_08rr5"]
 [ext_resource type="Texture2D" uid="uid://fa6guitmyxwh" path="res://art/resources/food.png" id="5_jl20v"]
-[ext_resource type="Texture2D" uid="uid://wsyh1166rawe" path="res://art/ui/arrow.svg" id="6_3w5of"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vmf1p"]
 texture = ExtResource("1_v8da6")
@@ -140,14 +139,14 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 alignment = 1
 
+[node name="Wood" type="TextureRect" parent="UpgradeContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rv656")
+expand_mode = 3
+
 [node name="WoodBonus" type="Label" parent="UpgradeContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Tools"
+text = "x2"
 label_settings = SubResource("LabelSettings_0ja8k")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Wood" type="TextureRect" parent="UpgradeContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_3w5of")
-expand_mode = 3

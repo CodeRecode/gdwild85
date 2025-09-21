@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cda1tiyw1kh5g"]
+[gd_scene load_steps=19 format=3 uid="uid://cda1tiyw1kh5g"]
 
 [ext_resource type="Script" uid="uid://xek5lmvvegqj" path="res://buildings/houses/generic_building.gd" id="1_t0ehr"]
 [ext_resource type="Script" uid="uid://d1smwnicvqg2p" path="res://resource.gd" id="2_568q3"]
 [ext_resource type="PackedScene" uid="uid://52wvmusxqvda" path="res://art/building.glb" id="3_2jajr"]
 [ext_resource type="PackedScene" uid="uid://bmmkgiy15g2y3" path="res://art/plot.glb" id="4_43tq6"]
 [ext_resource type="PackedScene" uid="uid://crtqhftgga4pi" path="res://art/tent.glb" id="5_6ur0v"]
-[ext_resource type="PackedScene" uid="uid://dsko7ff5b1ei1" path="res://buildings/recipe_board.tscn" id="6_xjwbn"]
+[ext_resource type="Texture2D" uid="uid://cupxa3dpt71mm" path="res://art/ui/rectangle.svg" id="6_1yhye"]
+[ext_resource type="Texture2D" uid="uid://b4vrn0b8m4tq5" path="res://art/resources/log.png" id="7_mxjrj"]
+[ext_resource type="Texture2D" uid="uid://bd5araxl5u2og" path="res://art/resources/stone.png" id="8_48s6h"]
+[ext_resource type="Texture2D" uid="uid://tai5t5ds2tuy" path="res://art/resources/thatch.png" id="9_cwcqc"]
+[ext_resource type="Texture2D" uid="uid://fa6guitmyxwh" path="res://art/resources/food.png" id="10_3qga1"]
 
 [sub_resource type="Resource" id="Resource_7ank7"]
 script = ExtResource("2_568q3")
@@ -33,6 +37,25 @@ metadata/_custom_type_script = "uid://d1smwnicvqg2p"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pkg7o"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vmf1p"]
+texture = ExtResource("6_1yhye")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cu0vx"]
+outline_size = 4
+outline_color = Color(0.05, 0.05, 0.05, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.745098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ja8k"]
+outline_size = 4
+outline_color = Color(0.05, 0.05, 0.05, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.745098)
+
 [node name="StoneMason" type="StaticBody3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 collision_layer = 12
@@ -55,4 +78,128 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visible = false
 
-[node name="RecipeBoard" parent="." instance=ExtResource("6_xjwbn")]
+[node name="RecipeBoard" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecipeBoard" type="PanelContainer" parent="RecipeBoard"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_vmf1p")
+
+[node name="MarginContainer" type="MarginContainer" parent="RecipeBoard/RecipeBoard"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RecipeBoard/RecipeBoard/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Logs" type="TextureRect" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("7_mxjrj")
+expand_mode = 5
+
+[node name="LogsAmount" type="Label" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Logs"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 32.0
+offset_right = 79.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_cu0vx")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Stone" type="TextureRect" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_48s6h")
+expand_mode = 3
+
+[node name="StoneAmount" type="Label" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Stone"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 75.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_cu0vx")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Thatch" type="TextureRect" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_cwcqc")
+expand_mode = 3
+
+[node name="ThatchAmount" type="Label" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Thatch"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 32.0
+offset_right = 86.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_cu0vx")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Food" type="TextureRect" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_3qga1")
+expand_mode = 3
+
+[node name="FoodAmount" type="Label" parent="RecipeBoard/RecipeBoard/MarginContainer/HBoxContainer/Food"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 32.0
+offset_right = 77.0
+offset_bottom = 55.0
+text = "x0"
+label_settings = SubResource("LabelSettings_cu0vx")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Spacer" type="Control" parent="RecipeBoard"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="UpgradeContainer" type="PanelContainer" parent="RecipeBoard"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_vmf1p")
+
+[node name="MarginContainer" type="MarginContainer" parent="RecipeBoard/UpgradeContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RecipeBoard/UpgradeContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Wood" type="TextureRect" parent="RecipeBoard/UpgradeContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_48s6h")
+expand_mode = 3
+
+[node name="WoodBonus" type="Label" parent="RecipeBoard/UpgradeContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "x2"
+label_settings = SubResource("LabelSettings_0ja8k")
+horizontal_alignment = 1
+vertical_alignment = 1
