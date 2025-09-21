@@ -10,6 +10,10 @@ texture = ExtResource("1_nm7lk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wukud"]
 texture = ExtResource("1_nm7lk")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_il2jm"]
 texture = ExtResource("1_nm7lk")
@@ -26,12 +30,15 @@ Button/styles/hover = SubResource("StyleBoxTexture_bc84e")
 Button/styles/normal = SubResource("StyleBoxTexture_wukud")
 Button/styles/pressed = SubResource("StyleBoxTexture_il2jm")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbp6q"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nm7lk"]
+texture = ExtResource("1_nm7lk")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [node name="Credits" type="PanelContainer"]
 process_mode = 3
-visible = false
 light_mask = 0
 anchors_preset = -1
 anchor_left = 0.155
@@ -45,15 +52,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_il2jm")
-theme_override_styles/panel = SubResource("StyleBoxFlat_cbp6q")
+theme_override_styles/panel = SubResource("StyleBoxTexture_nm7lk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-layout_mode = 2
-texture = ExtResource("1_nm7lk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -76,22 +79,34 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="license stuff" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
-size_flags_horizontal = 4
+
+[node name="license stuff" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.313726, 0.176471, 0.0862745, 1)
 theme_override_font_sizes/font_size = 30
-text = "\"Sunny and Happy - Acoustic Joy\" 
-by Dvir Silverstone from Pixabay
+text = "\"Sunny and Happy - Acoustic Joy\" -- Dvir Silverstone (Sonican) -- https://pixabay.com/music/acoustic-group-sunny-and-happy-acoustic-joy-232747/
+
+AxeChop by xXKRONOSXx -- https://freesound.org/s/764533/ -- License: Attribution NonCommercial 4.0
+
+kettlebell on concrete rock stone metal drag impact.wav by rsellick -- https://freesound.org/s/545544/ -- License: Creative Commons 0
+
+to cut and drag the grass with a knife and sickle.aif by hadescolossus -- https://freesound.org/s/705228/ -- License: Creative Commons 0
 
 Sound Effects by freesound_community
  from Pixabay"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -31,7 +31,3 @@ func _on_credits_back_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	self.hide()
 	credits_menu.show()
-
-
-func _on_back_button_pressed() -> void:
-	pass # Replace with function body.
