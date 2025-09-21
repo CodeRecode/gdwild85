@@ -2,6 +2,9 @@ extends CharacterBody3D
 class_name Player
 
 
+signal all_buildings_complete
+var signal_emitted: bool = false
+
 @onready var axe_sfx: AudioStreamPlayer3D = $AxeSFX
 @onready var stone_sfx: AudioStreamPlayer3D = $StoneSFX
 @onready var thatch_sfx: AudioStreamPlayer3D = $ThatchSFX
@@ -56,6 +59,16 @@ func _physics_process(_delta: float) -> void:
 	_check_gather_resources()
 	_check_build()
 	move_and_slide()
+
+	var all_built: bool = true
+
+	for type in Building.BuildingType.values():
+		if houses_built[type] == 1:
+			all_built = false
+
+	if all_built and signal_emitted == false:
+		all_buildings_complete.emit()
+		signal_emitted = true
 
 
 func _read_movement_input() -> void:
@@ -135,7 +148,7 @@ func _check_gather_resources() -> void:
 	if Input.is_action_just_pressed("interact"):
 		var pos_delta = animalchar.global_position - detected_resource_node.global_position;
 		animalchar.look_at(animalchar.global_position + pos_delta.normalized())
-		var damage: int = 1
+		var damage: int = 100
 
 		damage *= houses_built[4]
 		damage *= houses_built[5]
