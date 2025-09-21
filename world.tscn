@@ -755,7 +755,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 25)
 node_health = 5
 
 [node name="TreeOrange2" parent="Resources/Trees" instance=ExtResource("15_2u3nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -1, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 15)
 resource_amount = 1
 node_health = 4
 
