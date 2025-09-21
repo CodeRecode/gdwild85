@@ -145,11 +145,9 @@ func _check_gather_resources() -> void:
 			ResourceCost.ResourceType.WOOD:
 				axe.visible = true
 				animation_state_machine.start("Chop_Bounce")
-				axe_sfx.play(0)
 			ResourceCost.ResourceType.STONE:
 				hammer.visible = true
 				animation_state_machine.start("Chop_Bounce")
-				stone_sfx.play(0)
 			ResourceCost.ResourceType.THATCH:
 				sickle.visible = true
 				animation_state_machine.start("Chop")
@@ -186,6 +184,12 @@ func _add_resources_to_inventory(resources: Dictionary) -> void:
 
 	_update_hud_amounts()
 
+
+func chop_hit() -> void:
+	if detected_resource_node and detected_resource_node.resource_type == ResourceCost.ResourceType.WOOD:
+		axe_sfx.play(0)
+	else:
+		stone_sfx.play(0)
 
 func _check_build() -> void:
 	if detected_building_node == null:

@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://gkq2jt0eoq0f" path="res://characters/bird_villager/bird_villager.tscn" id="22_mc2jv"]
 [ext_resource type="Shader" uid="uid://bk25i277vp8cj" path="res://art/env/water.gdshader" id="22_wukud"]
 [ext_resource type="PackedScene" uid="uid://bdknux1do1nei" path="res://art/env/fence.tscn" id="23_il2jm"]
-[ext_resource type="AudioStream" uid="uid://b6o27dcoc6qkl" path="res://audio/sunny-and-happy-acoustic-joy-232747.mp3" id="26_bo7i5"]
+[ext_resource type="AudioStream" uid="uid://chbsnsax2ya25" path="res://audio/sunny-and-happy-acoustic-joy-232747.ogg" id="26_bo7i5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 geometry_collision_mask = 4294967041
