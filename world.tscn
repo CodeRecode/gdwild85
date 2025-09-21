@@ -290,22 +290,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7.5292)
 [node name="Buildings" type="Node" parent="."]
 
 [node name="Cafe" parent="Buildings" instance=ExtResource("2_pkg7o")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.77092, 0.02, -4)
+transform = Transform3D(0.160854, 0, -0.253231, 0, 0.3, 0, 0.253231, 0, 0.160854, 4.77092, 0.02, -4)
 
 [node name="FoodStorage" parent="Buildings" instance=ExtResource("3_gbfbk")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.829416, 0.02, -12.074)
+transform = Transform3D(0.258552, 0, -0.152153, 0, 0.3, 0, 0.152153, 0, 0.258552, 0.829416, 0.02, -12.074)
 
 [node name="GeneralStore" parent="Buildings" instance=ExtResource("4_ioo17")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -16.4983, 0.025, 0.653809)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -19.125, 0.0577907, 0.77742)
 
 [node name="StoneMason" parent="Buildings" instance=ExtResource("5_wse8f")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -6.77426, 0.02, -14.5597)
 
 [node name="Thatcher" parent="Buildings" instance=ExtResource("6_ic0uy")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -8.14365, 0.02, -3.72803)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -10.1358, 0.02, 4.91429)
 
 [node name="Woodcutter" parent="Buildings" instance=ExtResource("7_k3n1d")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -17.4784, 0.025, -12.2842)
+transform = Transform3D(0.256221, 0, 0.156048, 0, 0.3, 0, -0.156048, 0, 0.256221, -17.4784, 0.025, -12.2842)
 
 [node name="PlayerTent" parent="Buildings" instance=ExtResource("3_aqk2v")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2, 0.02, 3)
@@ -826,7 +826,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41421, -0.00012207, -0.9991
 building = NodePath("../Buildings/Cafe")
 
 [node name="FoxVillager" parent="." node_paths=PackedStringArray("building") instance=ExtResource("21_wjb0r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 8.14831)
 building = NodePath("../Buildings/Thatcher")
 
 [node name="BirdVillager" parent="." node_paths=PackedStringArray("building") instance=ExtResource("22_mc2jv")]
